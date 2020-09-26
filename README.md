@@ -10,6 +10,8 @@ The languages we used to build this project were Python, JavaScript, and markup 
 ## How we built it
 Our Discord bot implemented the Discord API in order to interact with users. It works in conjunction to the server backend, and communicates to it via a RESTful API. The backend server uses websockets to synchronize video playing between devices, and interacts with the YouTube Data API v3 for video playback from YouTube. The framework for the front end, the implementation of the websocket, and the chat backend was adapted from Vynchronize. However, with the addition of the new API and with the connection of the Discord bot to our website, many existing features were incompatible, so we had to do a complete rehaul. The website was designed with HTML and CSS, with JQuery and AJAX for server communication.
 
+Vynchronize is licensed under the MIT License.
+
 ## Challenges we ran into
 When we initially had an idea, we realized that it would be impossible to learn how to implement a video player that would synchronize across users' screens in 24 hours, so we were forced to rely on a pre-existing framework. Another challenge was that the framework had to be adjusted quite a lot to suit our needs.
 
