@@ -16,19 +16,21 @@ DM_API_KEY = process.env.DM_API_KEY;
 // Set given room for url parameter
 var given_room = ""
 
+// Set given URL for api parameter
+var given_URL = ""
+
 app.use(express.static(__dirname + '/'));
 
 server.listen(process.env.PORT || 3000);
 console.log('Server Started . . .');
 
 
-// app.param('room', function(req,res, next, room){
-//     console.log("testing")
-//     console.log(room)
-//     given_room = room
-// res.sendFile(__dirname + '/index.html');
-// });
+// ROUTING
 
+app.get('/api/:vidURL', function(req, res) {
+    given_URL = req.params.vidURL
+    res.send(given_URL);
+});
 
 app.get('/:room', function(req, res) {
     given_room = req.params.room
@@ -36,19 +38,6 @@ app.get('/:room', function(req, res) {
 });
 
 
-//var roomno = 1;
-/*
-io.on('connection', function(socket) {
-
-   //Increase roomno 2 clients are present in a room.
-   //if(io.nsps['/'].adapter.rooms["room-"+roomno] && io.nsps['/'].adapter.rooms["room-"+roomno].length > 1) roomno++;
-
-   // For now have it be the same room for everyone!
-   socket.join("room-"+roomno);
-
-   //Send this event to everyone in the room.
-   io.sockets.in("room-"+roomno).emit('connectToRoom', "You are in room no. "+roomno);
-})*/
 
 var roomno = 1;
 
@@ -176,7 +165,7 @@ io.sockets.on('connection', function(socket) {
             io.sockets.adapter.rooms['room-' + socket.roomnum].currPlayer = 0
             // Default video
             io.sockets.adapter.rooms['room-' + socket.roomnum].currVideo = {
-                yt: 'M7lc1UVf-VE',
+                yt: 'ANOFGUByO98',
                 dm: 'x26m1j4',
                 vimeo: '76979871',
                 html5: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4'
@@ -184,7 +173,7 @@ io.sockets.on('connection', function(socket) {
             // Previous Video
             io.sockets.adapter.rooms['room-' + socket.roomnum].prevVideo = {
                 yt: {
-                    id: 'M7lc1UVf-VE',
+                    id: 'ANOFGUByO98',
                     time: 0
                 },
                 dm: {
