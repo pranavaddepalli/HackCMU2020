@@ -352,6 +352,24 @@
         // Don't allow trailing or leading whitespace!
         var nosymbols = new RegExp("^(([a-zA-Z0-9_-][a-zA-Z0-9 _-]*[a-zA-Z0-9_-])|([a-zA-Z0-9_-]*))$");
 
+        var repeater;
+
+        function msgCheck() {
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                    if(this.responseText.length > 0){
+                    socket.emit('send dmessage', this.responseText);               
+                }
+                
+            };
+            xhttp.open("GET", "/discordfrontend/msg", true);
+            xhttp.send();
+ 
+            repeater = setTimeout(msgCheck, 1000);
+        }
+//THERE IS A BUG HERE BUT I DONT KNOW HOW TO FIX IT
+        msgCheck();
+
         // Chat stuff
         $(function() {
             var $messageForm = $('#messageForm');
