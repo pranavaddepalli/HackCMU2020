@@ -39,7 +39,7 @@
 
     <link href="css/style.css" rel="stylesheet">
     <link href="css/mobile-style.css" rel="stylesheet">
-    <!--<link href="css/html5player.css" rel="stylesheet"> -->
+    <!-- <link href="css/html5player.css" rel="stylesheet"> -->
 
     <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="96x96" href="img/favicon-96x96.png">
@@ -47,76 +47,52 @@
 
 </head>
 
-<body class="bg-light" id="Home">
+<body id="Home" style="background-image: url('Wallpaper.jpg');">
 
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-        <div class="container">
-            <a class="navbar-brand js-scroll-trigger" href="#Home"><img src="img/logo.png" alt="Vynchronize logo" height="40" width="40"> Vynchronize</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-            <div class="collapse navbar-collapse" id="navbarResponsive">
-                <ul class="navbar-nav ml-auto">
-                    <!-- <li class="nav-item active">
-              <a class="nav-link js-scroll-trigger" href="#Home">Home
-                <span class="sr-only">(current)</span>
-              </a>
-            </li> -->
-                    <li class="nav-item">
-                        <a id="chat-nav" class="nav-link js-scroll-trigger hide" href="#messageArea">Chatroom</a>
-                    </li>
-                    <li class="nav-item">
-                        <a id="about-nav" class="nav-link js-scroll-trigger hide" href="#about">About</a>
-                    </li>
-                    <li class="nav-item">
-                        <a id="contact-nav" class="nav-link js-scroll-trigger hide" href="#contact">Contact</a>
-                    </li>
-                    <li class="nav-item">
-                        <a target="_blank" rel="noopener noreferrer" class="nav-link js-scroll-trigger" href="https://www.facebook.com/vynchronize">
-                            <i class="fab fa-facebook"></i>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a target="_blank" rel="noopener noreferrer" class="nav-link js-scroll-trigger" href="https://github.com/kyle8998/Vynchronize">
-                            <i class="fab fa-github"></i>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+    <div class="navBanner">
+        <h1 class="navFont" href="#Home">s p e c t r e</h1>
+    </div>
 
     <!-- Page Content -->
     <div class="container">
 
-        <!-- Loading page -->
-        <!-- Loader is currently dependent on the dailymotion api because it is the slowest -->
-        <!--<div id="loading"></div> -->
-
         <!-- User Form (First Page) -->
-        <div id="userFormArea" class="row">
-            <div class="col-md-12">
+        <div id="userFormArea">
+            <div>
                 <!-- ADD DESCRIPTION HERE -->
-                <h2>Welcome to Vynchronize</h2>
-                <p class="lead">The hot new video synchronization platform used to watch videos in realtime with friends!</p>
-                <hr style="height:20pt; visibility:hidden;" />
-
-                <h2> Join a Room! </h2>
+                <p style="color: #DEDEDE; text-align: center; font-size: 30px;">Welcome.</h2>
+                    <br/>
+                    <br/>
+                    <br/>
                 <form id="userForm">
                     <div class="form-group">
-                        <p style="color:red; margin-bottom: 0px" id="missinginfo"></p>
-                        <label>Enter Name</label>
-                        <input class="form-control" id="username" />
+                        <div class="row justify-content-center">
+                            <p style="color:red; margin-bottom: 0px" id="missinginfo"></p>
+                            <br/>
+                            <label style="color: #DEDEDE; text-align: center; font-size: 15px;">Your Name</label>
+                        </div>
+                        <div class="row justify-content-center">
+                            <input class="form-control form control-lg col-sm-4" id="username"/>
+                        </div>
                         <br />
-                        <p style="color:red; margin-bottom: 0px" id="missinginfo2"></p>
-                        <label>Enter Room ID (Default 1)</label>
-                        <button type="button" onClick="randomroom()" class="btn btn-primary random">Random</button>
                         <br/>
-                        <input class="form-control" id="roomnum" />
+                        
+                        <div class="row justify-content-center">
+                            <p style="color:red; margin-bottom: 0px" id="missinginfo2"></p>
+                            <br/>
+                            <label style="color: #DEDEDE; text-align: center; font-size: 15px;">Room Code</label>
+                        </div>
+                        <div class="row justify-content-center">
+                            <input class="form-control form control-lg col-sm-3" id="roomnum" />
+                            <button type="button" onClick="randomroom()" style="margin-left: 10px" class="btn btn-outline-info">We'll Pick</button>
+                        </div>
                         <br/>
-
-                        <input style="margin-top: 10px;" type="submit" class="btn btn-primary" value="Enter" />
+                        <br/>
+                        <br/>
+                        <div class="row justify-content-center">
+                            <input style="margin-top: 10px;" type="submit" class="btn btn-lg btn-outline-info" value="I'm Ready" />
+                        </div>
                         <hr style="height:65pt; visibility:hidden;" />
                     </div>
                 </form>
@@ -136,7 +112,7 @@
 
                     <!-- INVITE MOVED TO MODAL -->
                     <!-- <p id="invite">Invite a friend! Send them the link: vynchronize.herokuapp.com/ROOMNUM</p> -->
-                    <h2><span id="hostlabel" class="label label-default"><i class="fas fa-user"></i> Current Host: Kyle </span></h2>
+                    <h2><span id="hostlabel" class="label label-default"><i class="fas fa-user"></i> Current Host: nobody </span></h2>
 
                     <!----------------------------------- PLAYER AREA ----------------------------------->
 
