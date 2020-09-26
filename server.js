@@ -35,9 +35,10 @@ app.get('/:room', function(req, res) {
 });
 
 
-
+var droom = "";
 app.get('/api/:vidURL', function(req, res) {
     given_URL = req.params.vidURL
+    droom = req.params.vidURL
     res.redirect('/' + given_URL);
 });
 
@@ -497,8 +498,8 @@ io.sockets.on('connection', function(socket) {
         var encodedMsg = discMsg.replace(/</g, "&lt;").replace(/>/g, "&gt;");
         console.log(socket.roomnum);
         console.log(discordRoom);
-        console.log(vidURL);
-        io.sockets.in("room-" + vidURL).emit('send message', {
+        console.log(droom);
+        io.sockets.in("room-" + droom).emit('send message', {
             msg: encodedMsg,
             user: 'from discord'
         });
