@@ -256,6 +256,7 @@ io.sockets.on('connection', function(socket) {
         res.send("POST request receieved with message " + discMsg);
         discMsg = "";
     });
+
     // Play video
     socket.on('play video', function(data) {
         var roomnum = data.room
@@ -497,6 +498,7 @@ io.sockets.on('connection', function(socket) {
 
     // Discord integration
     socket.on('discord msg', function(data){
+        console.log('entered discordmsg socket function');
         var discordmessage = data;
         io.sockets.in("room-" + socket.roomnum).emit('new message', {
             msg: discordmessage,
@@ -508,6 +510,7 @@ io.sockets.on('connection', function(socket) {
     socket.on('send message', function(data) {
         var encodedMsg = data.replace(/</g, "&lt;").replace(/>/g, "&gt;");
         // console.log(data);
+        console.log('entered new msg socket function');
         io.sockets.in("room-" + socket.roomnum).emit('new message', {
             msg: encodedMsg,
             user: socket.username
