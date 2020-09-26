@@ -169,11 +169,6 @@ io.sockets.on('connection', function(socket) {
             // Default video
             var defaultVid = 'ANOFGUByO98';
 
-
-
-            // reset vidURL to prevent setting a default for every socket
-            vidURL = "";
-
             io.sockets.adapter.rooms['room-' + socket.roomnum].currVideo = {
                 yt: defaultVid
             }
@@ -184,6 +179,8 @@ io.sockets.on('connection', function(socket) {
                     yt: vidURL
                 }
             }
+            // reset vidURL to prevent setting a default for every socket
+            vidURL = "";
 
             // Previous Video
             io.sockets.adapter.rooms['room-' + socket.roomnum].prevVideo = {
