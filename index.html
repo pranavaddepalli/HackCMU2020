@@ -397,10 +397,9 @@
         function msgCheck() {
             var xhttp = new XMLHttpRequest();
             xhttp.onreadystatechange = function() {
-                    var discordmsgfrombackend = this.responseText;
                     if(this.responseText.length > 0){
-                socket.emit('send dmessage', this.responseText);               
-            }
+                    socket.emit('send dmessage', this.responseText);               
+                }
                 
             };
             xhttp.open("GET", "/discordfrontend/msg", true);
