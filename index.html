@@ -26,11 +26,6 @@
 
     <link href="css/style.css" rel="stylesheet">
     <link href="css/mobile-style.css" rel="stylesheet">
-    <!-- <link href="css/html5player.css" rel="stylesheet"> -->
-
-    <!-- <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="96x96" href="img/favicon-96x96.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png"> -->
 
 </head>
 
@@ -56,16 +51,6 @@
                     <li class="nav-item">
                         <a id="contact-nav" class="nav-link js-scroll-trigger hide" href="#contact"></a>
                     </li>
-                    <!-- <li class="nav-item">
-                        <a target="_blank" rel="noopener noreferrer" class="nav-link js-scroll-trigger" href="https://www.facebook.com/vynchronize">
-                            <i class="fab fa-facebook"></i>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a target="_blank" rel="noopener noreferrer" class="nav-link js-scroll-trigger" href="https://github.com/kyle8998/Vynchronize">
-                            <i class="fab fa-github"></i>
-                        </a>
-                    </li> -->
                 </ul>
             </div>
         </div>
@@ -147,9 +132,7 @@
                                         <br/>
                                         <!-- <label>Enter Message...</label> -->
                                         <input class="form-control chat-form" id="message" placeholder="Enter Message..." />
-                                        <!-- <textarea class="form-control" id="message"></textarea> -->
                                         <br />
-                                        <!-- <input type="submit" class="btn btn-primary" value="Send Message" /> -->
                                         <br />
                                     </div>
                                 </form>
@@ -159,25 +142,6 @@
                 </div>
 
                 <div class="row" style="width: 100%">
-                    <!-- Buttons
-                    <div style="width: 100%">
-                        <div style="float: left;">
-                            <button id="playButton" onclick="playVideo(roomnum)" class="btn btn-outline-info" style="margin-left: 10px;"><i class="fa fa-play"></i> Play / <i class="fa fa-pause"></i> Pause</button>
-                            <button id="syncbutton" onclick="syncVideo(roomnum);syncAlert()" class="btn btn-outline-info" style="margin-left: 10px;"><i class="fa fa-sync"></i> Sync with Host</button>
-                            <button id="previousButton" onclick="prevVideo(roomnum)" class="btn btn-outline-info" style="margin-left: 10px;"><i class="fas fa-step-backward"></i> Previous</button>
-                            <button id="nextButton" onclick="playNext(roomnum)" class="btn btn-outline-info" style="margin-left: 10px;"><i class="fas fa-step-forward"></i> Next</button>
-                        </div>
-                        <br/>
-                        <br/>
-
-                        
-                        <div>
-                            <input type="Video" style="max-width: 200px; margin-bottom: .5rem; margin-left: 10px; float: left;" class="form-control" id="inputVideoId" placeholder="Enter Video URL">
-                            <button id="enqueueButton" onclick="enqueueVideoParse(roomnum)" class="btn btn-outline-info" style="margin-left: 20px;"><i class="fas fa-plus"></i> Add to Queue</button>
-                            <button id="emptyButton" onclick="emptyQueue(roomnum)" class="btn btn-outline-info" style="margin-left: 10px;"><i class="fas fa-trash"></i> Empty Queue</button>
-                        </div>
-                        <br/>
-                    </div> -->
                 </div>
 
                 <div class="row" style="float: left; width: 100%;">
@@ -255,8 +219,7 @@
                                 </div>
                                 <div class="modal-body">
                                     <p>Send a friend your unique room link so they can watch videos too!</p>
-                                    <!-- <p style="text-align: center;" id="invite">vynchronize.herokuapp.com/ROOMNUM</p> -->
-                                    <input class="inv_input" id="inv_input" type="text" value="vynchronize.herokuapp.com/ROOMNUM" class="field left" readonly>
+                                    <input class="inv_input" id="inv_input" type="text" value="cmu_spectre.herokuapp.com/ROOMNUM" class="field left" readonly>
                                 </div>
                                 <div class="modal-footer">
                                     <div style="opacity: 1" class="tooltip">
@@ -271,101 +234,8 @@
                 </div>
             </div>
         </div>
-
-        <!-- Content Row -->
-        <!-- <div class="row">
-    <div class="col-md-4 mb-4">
-      <div class="card h-100">
-        <div class="card-body">
-          <h2 class="card-title">Card One</h2>
-          <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem magni quas ex numquam, maxime minus quam molestias corporis quod, ea minima accusamus.</p>
-        </div>
-        <div class="card-footer">
-          <a href="#" class="btn btn-primary">More Info</a>
-        </div>
-      </div>
-    </div> -->
-        <!-- /.col-md-4 -->
-        <!-- <div class="col-md-4 mb-4">
-      <div class="card h-100">
-        <div class="card-body">
-          <h2 class="card-title">Card Two</h2>
-          <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod tenetur ex natus at dolorem enim! Nesciunt pariatur voluptatem sunt quam eaque, vel, non in id dolore voluptates quos eligendi labore.</p>
-        </div>
-        <div class="card-footer">
-          <a href="#" class="btn btn-primary">More Info</a>
-        </div>
-      </div>
-    </div> -->
-        <!-- /.col-md-4 -->
-        <!-- <div class="col-md-4 mb-4">
-      <div class="card h-100">
-        <div class="card-body">
-          <h2 class="card-title">Card Three</h2>
-          <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem magni quas ex numquam, maxime minus quam molestias corporis quod, ea minima accusamus.</p>
-        </div>
-        <div class="card-footer">
-          <a href="#" class="btn btn-primary">More Info</a>
-        </div>
-      </div>
-    </div> -->
-        <!-- /.col-md-4 -->
-
-        <!-- </div> -->
-        <!-- /.row -->
-
-        <!-- <hr style="height:20pt; visibility:hidden;" /> -->
-        <!-- <section id="about" class="bg-light">
-            <hr style="height:100pt; visibility:hidden;" />
-
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-8 mx-auto">
-                        <h2>About Vynchronize</h2>
-                        <p class="lead">Vynchronize is a video synchronization platform created for viewing parties with friends!</p>
-                        <p> To use Vynchronize just enter your name and a shared room number with friends. Then all you have to do is select your video client (YouTube by default), enter a video ID, and click "Change Video". All video playback should
-                            be synchronized to everyone in the room! </p>
-                        <p> There is one host per room that can control the video client directly with the native player controls. Everyone else can still use them but it will only affect them until they hit sync!</p>
-                        <p> Have fun watching videos with friends!</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <hr style="height:20pt; visibility:hidden;" />
-
-        <section id="contact" class="bg-light">
-            <hr style="height:100pt; visibility:hidden;" />
-
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-8 mx-auto">
-                        <h2>Contact Me</h2>
-                        <p class="lead">Who Am I?</p>
-                        <p> I'm Kyle! A student and developer just trying build software for the everyday user! I developed Vynchronize because it was a problem that I needed to solve myself, and now I continue to build it for the those who enjoy using
-                            it! :)</p>
-                        <p> You can contact me directly at <a href="mailto:kylelim8998@gmail.com?Subject=Vynchronize">kylelim8998@gmail.com</a> if you have any questions, concerns, or just to say hi! If you want to submit a suggestion, please see the
-                            github issues page.</p>
-                        <p> Also I want to keep the website up and running with an ad-free experience because I hate ads too! I'm currently paying for servers and a domain, but they are expensive to a broke college kid. If you would like to donate click
-                            below! I appreciate the support!</p>
-                        <a href="https://www.paypal.me/kylelim"><button style="margin-top:.5rem" class="btn btn-primary"><i class="far fa-heart"></i> Donate</button></a>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <hr style="height:50pt; visibility:hidden;" /> -->
-
     </div>
 </div>
-
-    <!-- /.container -->
-
-    <!-- Footer -->
-    <footer id="footer">
-        <!-- <div class="container">
-            <p class="m-0 text-center text-white">Copyright &copy; Vynchronize 2018</p>
-        </div> -->
-        <!-- /.container -->
-    </footer>
 
     <script>
         var socket = io.connect();
@@ -388,19 +258,6 @@
             var $roomnum = $('#roomnum');
 
             var $vidlist = $('#vidlist');
-
-            //   function send_message() {
-            //       socket.emit('send message', $message.val());
-            //       $message.val('');
-            //   }
-            //
-            //   $(document).keyup(send_message());
-            //   $("input").keypress(function(event) {
-            //     if (event.which == 13) {
-            //         event.preventDefault();
-            //         send_message();
-            //     }
-            // });
 
 
             $messageForm.submit(function(e) {
@@ -433,19 +290,14 @@
                 // If you sent the last message, append to previous
                 else {
                     last_div.innerHTML = last_div.innerHTML + " <br> " + data.msg
-                    // $vidlist.append('<div class="vid-item"><div class="thumb"><img src="http://img.youtube.com/vi/eg6kNoJmzkY/0.jpg"></div><div class="desc">Jessica Hernandez & the Deltas - Dead Brains</div></div>');
                 }
-                // $chat.scrollTop = $chat.scrollHeight;
-                // Auto scroll on each message send!
                 $('div#chat').scrollTop($('div#chat')[0].scrollHeight)
             });
 
             // Submit user form
             $userForm.submit(function(e) {
                 e.preventDefault();
-                // console.log("Submitted");
-                // New User
-
+                
                 // Get rid of trailing/leading whitespace
                 // var roomnum_val = $roomnum.val().trim();
 
@@ -490,19 +342,14 @@
                             document.getElementById('about-nav').style.display = 'block';
                             document.getElementById('contact-nav').style.display = 'block';
 
-                            // No longer using initarea
-                            // var initStuff = document.getElementById("initArea")
-                            // initStuff.innerHTML = ""
-
                             // This sets the room number on the client
                             if ($roomnum.val() != "") {
                                 roomnum = $roomnum.val()
                             }
 
                             // Sets the invite link (roomnum)
-                            // document.getElementById('invite').innerHTML = "vynchronize.herokuapp.com/" + roomnum
-                            document.getElementById("inv_input").value = "vynchronize.herokuapp.com/" + roomnum
-                            history.pushState('', 'Vynchronize', roomnum);
+                            document.getElementById("inv_input").value = "cmu_spectre.herokuapp.com/" + roomnum
+                            history.pushState('', 'cmu_spectre', roomnum);
 
                         }
                     });
@@ -523,8 +370,6 @@
                 var html = '';
                 for (i = 0; i < data.length; i++) {
                     html += '<li style="padding-right: 10em;" class="list-group-item chat-users">' + data[i] + '</li>';
-                    // html += '<div class="well well-sm message-well">' + data[i] + '</div>';
-                    // <div class="well well-sm message-well"><strong>
                 }
 
                 $users.html(html)
@@ -638,8 +483,6 @@
             // Ensure no valid id too
             if (data.id != "" && nosymbols.test(data.id)) {
                 document.getElementById('roomnum').value = data.id
-                // Probably should not force it to be readonly
-                // document.getElementById('roomnum').readOnly = true
                 console.log("You are joining room: " + data.id)
             }
             // Reset url for next person
@@ -656,7 +499,6 @@
             /* Copy the text inside the text field */
             document.execCommand("Copy");
             /* Alert the copied text */
-            // alert("Copied the text: " + copyText.value);
             var tooltip = document.getElementById("myTooltip");
             tooltip.innerHTML = "Copied!";
         }
@@ -690,14 +532,6 @@
 
     <!-- Youtube -->
     <script src="js/yt.js"></script>
-    <!-- Daily Motion -->
-    <!-- <script src="https://api.dmcdn.net/all.js"></script> -->
-    <!-- <script src="js/dm.js"></script> -->
-    <!-- Vimeo -->
-    <!-- <script src="https://player.vimeo.com/api/player.js"></script> -->
-    <!-- <script src="js/vimeo.js"></script> -->
-    <!-- HTML5 Player -->
-    <!-- <script src="js/html5.js"></script> -->
 
 </body>
 
