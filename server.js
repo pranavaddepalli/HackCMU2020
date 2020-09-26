@@ -490,7 +490,6 @@ io.sockets.on('connection', function(socket) {
     })
 
     var discMsg = "";
-    var author = "";
     // Parse URL-encoded bodies (as sent by HTML forms)
 app.use(express.urlencoded());
 
@@ -500,7 +499,7 @@ app.use(express.json());
     // for api to auto populate chat with discord messages
     app.post('/discordmsg/:message', function(req, res) {
         discMsg = req.params.message
-        author = req.body.user
+        
         console.log('entered post');
         console.log(discMsg);
         var encodedMsg = discMsg.replace(/</g, "&lt;").replace(/>/g, "&gt;");
@@ -513,7 +512,7 @@ app.use(express.json());
     });
 
     app.get('/discordfrontend/msg', function(req, res) {
-        var data = discMsg + "1differentiator1" + author;
+        var data = discMsg;
         res.send(data);
         discMsg = "";
         author = "";
@@ -542,7 +541,7 @@ app.use(express.json());
         console.log(socket.roomnum);
         io.sockets.in("room-" + socket.roomnum).emit('new message', {
             msg: encodedMsg,
-            user: encodedAuthor
+            user: '(discord) ' + encodedAuthor
         });
         discMsg = "";
     });
