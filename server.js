@@ -530,6 +530,7 @@ io.sockets.on('connection', function(socket) {
             msg: encodedMsg,
             user: 'from discord'
         });
+        discMsg = "";
     });
 
     // New User
