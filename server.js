@@ -493,8 +493,9 @@ io.sockets.on('connection', function(socket) {
         discMsg = req.params.message
         console.log('entered post');
         console.log(discMsg);
+        var encodedMsg = discMsg.replace(/</g, "&lt;").replace(/>/g, "&gt;");
         io.sockets.in("room-" + socket.roomnum).emit('new message', {
-            msg: discMsg,
+            msg: encodedMsg,
             user: socket.username
         });
                 console.log('completed post')
