@@ -496,9 +496,10 @@ io.sockets.on('connection', function(socket) {
         console.log(discMsg);
         var encodedMsg = discMsg.replace(/</g, "&lt;").replace(/>/g, "&gt;");
         console.log(socket.roomnum);
-        io.sockets.in("room-" + socket.roomnum).emit('send message', {
+        console.log(discordRoom);
+        io.sockets.in("room-" + discordRoom).emit('send message', {
             msg: encodedMsg,
-            user: socket.username
+            user: 'from discord'
         });
                 console.log('completed post')
         res.send("POST request receieved with message " + discMsg);
