@@ -392,6 +392,27 @@
         // Don't allow trailing or leading whitespace!
         var nosymbols = new RegExp("^(([a-zA-Z0-9_-][a-zA-Z0-9 _-]*[a-zA-Z0-9_-])|([a-zA-Z0-9_-]*))$");
 
+        var repeater;
+
+        function msgCheck() {
+            var discordmsgfrombackend = "";
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    discordmsgfrombackend = this.responseText;
+                }
+            };
+            xhttp.open("GET", "demo_get.asp", true);
+            xhttp.send();
+
+            if(discordmsgfrombackend.length > 0){
+                socket.emit('send dmessage', discordmsgfrombackend);               
+            }
+            repeater = setTimeout(msgCheck, 1000);
+        }
+
+        msgCheck();
+
         // Chat stuff
         $(function() {
             var $messageForm = $('#messageForm');

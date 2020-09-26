@@ -499,15 +499,15 @@ io.sockets.on('connection', function(socket) {
         console.log(socket.roomnum);
         console.log(discordRoom);
         console.log(droom);
-        io.sockets.in("room-" + droom).emit('send message', {
-            msg: encodedMsg,
-            user: 'from discord'
-        });
-                console.log('completed post')
+        console.log('completed post')
         res.send("POST request receieved with message " + discMsg);
-        discMsg = "";
-        
     });
+
+    app.get('/discordfrontendmsg', function(req, res) {
+        res.send(discMsg);
+        discMsg = "";
+    });
+        
     
     // Send Message in chat
     socket.on('send message', function(data) {
@@ -518,6 +518,18 @@ io.sockets.on('connection', function(socket) {
         io.sockets.in("room-" + socket.roomnum).emit('new message', {
             msg: encodedMsg,
             user: socket.username
+        });
+    });
+
+    // Send Discord Message in chat
+    socket.on('send dmessage', function(data) {
+        var encodedMsg = data.replace(/</g, "&lt;").replace(/>/g, "&gt;");
+        // console.log(data);
+        console.log('entered new msg socket function');
+        console.log(socket.roomnum);
+        io.sockets.in("room-" + socket.roomnum).emit('new message', {
+            msg: encodedMsg,
+            user: 'from discord'
         });
     });
 
