@@ -73,7 +73,6 @@ io.sockets.on('connection', function(socket) {
 
         // reset the default video
         vidURL = "";
-        given_room = "";
 
         connections.splice(connections.indexOf(socket), 1);
         console.log(socket.id + ' Disconnected: %s sockets connected', connections.length);
@@ -123,6 +122,7 @@ io.sockets.on('connection', function(socket) {
 
         // Gets vidURL data if given through API call 
         var vidURL = given_URL;
+        given_url = "";
 
         // This stores the room data for all sockets
         userrooms[socket.id] = data
