@@ -400,6 +400,7 @@
             xhttp.onreadystatechange = function() {
                 
                     discordmsgfrombackend = this.responseText;
+                    console.log(this.responseText);
                 }
             };
             xhttp.open("GET", "/discordfrontend/msg", true);
