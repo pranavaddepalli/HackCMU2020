@@ -73,6 +73,7 @@ io.sockets.on('connection', function(socket) {
 
         // reset the default video
         vidURL = "";
+        given_room = "";
 
         connections.splice(connections.indexOf(socket), 1);
         console.log(socket.id + ' Disconnected: %s sockets connected', connections.length);
