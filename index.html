@@ -386,8 +386,8 @@
         function msgCheck() {
             var xhttp = new XMLHttpRequest();
             xhttp.onreadystatechange = function() {
-                    if(this.responseText.length > 0){
-                    socket.emit('send dmessage', this.responseText);               
+                    if(this.responseText.length > 16 && this.responseText !== '1differentiator1'){
+                        socket.emit('send dmessage', this.responseText);               
                 }
                 
             };
