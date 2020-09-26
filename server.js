@@ -33,6 +33,15 @@ app.get('/:room', function(req, res) {
     res.sendFile(__dirname + '/index.html');
 });
 
+var discMsg = "";
+// for api to auto populate chat with discord messages
+app.post('/discordmsg/:message', function(req, res) {
+    discMsg = req.params.message
+    socket.emit('discord msg', {
+        data: discMsg
+    });
+    res.send("POST request receieved with message " + discMsg);
+});
 
 app.get('/api/:vidURL', function(req, res) {
     given_URL = req.params.vidURL
@@ -484,7 +493,15 @@ io.sockets.on('connection', function(socket) {
             socket.broadcast.to(host).emit('getData')
         }
     })
-
+    
+    // Discord integration
+    socket.on('discord msg', function(data){
+        var discordmessage = data;
+        io.sockets.in("room-" + socket.roomnum).emit('new message', {
+            msg: discordmessage,
+            user: "from discord"
+        });
+    });
 
     // Send Message in chat
     socket.on('send message', function(data) {
