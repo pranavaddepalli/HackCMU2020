@@ -27,10 +27,6 @@ console.log('Server Started . . .');
 
 // ROUTING
 
-app.get('/api/:vidURL', function(req, res) {
-    given_URL = req.params.vidURL
-    res.send(given_URL); 
-});
 
 app.get('/:room', function(req, res) {
     given_room = req.params.room
@@ -38,6 +34,10 @@ app.get('/:room', function(req, res) {
 });
 
 
+app.get('/api/bot/:vidURL', function(req, res) {
+    given_URL = req.params.vidURL
+    res.send(__dirname + '/index.html'); 
+});
 
 var roomno = 1;
 
@@ -51,16 +51,13 @@ io.sockets.on('connection', function(socket) {
         id: given_room
     })
 
-    // io.sockets.emit('broadcast',{ description: connections.length + ' clients connected!'});
+    // Set default video URL, if given through API
+    socket.emit('set vidURL', {
+        vidURL: given_URL
+    })
 
-    // For now have it be the same room for everyone!
-    //socket.join("room-"+roomno);
-
-    //Send this event to everyone in the room.
-    //io.sockets.in("room-"+roomno).emit('connectToRoom', "You are in room no. "+roomno);
 
     // reset url parameter
-    // Workaround because middleware was not working right
     socket.on('reset url', function(data) {
         given_room = ""
     });
@@ -76,8 +73,9 @@ io.sockets.on('connection', function(socket) {
 
         connections.splice(connections.indexOf(socket), 1);
         console.log(socket.id + ' Disconnected: %s sockets connected', connections.length);
-        // console.log(io.sockets.adapter.rooms['room-' + socket.roomnum])
-        // console.log(socket.roomnum)
+
+
+        /* adapted from Vynchronize on GitHub:::: */
 
 
         // HOST DISCONNECT
@@ -116,9 +114,11 @@ io.sockets.on('connection', function(socket) {
     // ------------------------------------------------------------------------
     // New room
     socket.on('new room', function(data, callback) {
-        //callback(true);
         // Roomnum passed through
         socket.roomnum = data;
+
+        // Gets vidURL data if given through API call 
+        var vidURL = socket.vidURL
 
         // This stores the room data for all sockets
         userrooms[socket.id] = data
@@ -138,7 +138,6 @@ io.sockets.on('connection', function(socket) {
         }
 
         // Checks if the room exists or not
-        // console.log(io.sockets.adapter.rooms['room-' + socket.roomnum] !== undefined)
         if (io.sockets.adapter.rooms['room-' + socket.roomnum] === undefined) {
             socket.send(socket.id)
             // Sets the first socket to join as the host
@@ -164,28 +163,20 @@ io.sockets.on('connection', function(socket) {
             // Default Player
             io.sockets.adapter.rooms['room-' + socket.roomnum].currPlayer = 0
             // Default video
+            var defaultVid = 'ANOFGUByO98';
+
+            // if API call was made reset defaultVid
+            if(vidURL.length > 0){
+                defaultVid = vidURL;
+            }
+
             io.sockets.adapter.rooms['room-' + socket.roomnum].currVideo = {
-                yt: 'ANOFGUByO98',
-                dm: 'x26m1j4',
-                vimeo: '76979871',
-                html5: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4'
+                yt: defaultVid,
             }
             // Previous Video
             io.sockets.adapter.rooms['room-' + socket.roomnum].prevVideo = {
                 yt: {
-                    id: 'ANOFGUByO98',
-                    time: 0
-                },
-                dm: {
-                    id: 'x26m1j4',
-                    time: 0
-                },
-                vimeo: {
-                    id: '76979871',
-                    time: 0
-                },
-                html5: {
-                    id: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4',
+                    id: defaultVid,
                     time: 0
                 }
             }
@@ -195,10 +186,7 @@ io.sockets.on('connection', function(socket) {
             io.sockets.adapter.rooms['room-' + socket.roomnum].users = [socket.username]
             // Set an empty queue
             io.sockets.adapter.rooms['room-' + socket.roomnum].queue = {
-                yt: [],
-                dm: [],
-                vimeo: [],
-                html5: []
+                yt: []
             }
         }
 
@@ -211,41 +199,8 @@ io.sockets.on('connection', function(socket) {
         updateQueueVideos()
 
         // Gets current video from room variable
-        switch (io.sockets.adapter.rooms['room-' + socket.roomnum].currPlayer) {
-            case 0:
-                var currVideo = io.sockets.adapter.rooms['room-' + socket.roomnum].currVideo.yt
-                break;
-            case 1:
-                var currVideo = io.sockets.adapter.rooms['room-' + socket.roomnum].currVideo.dm
-                break;
-            case 2:
-                var currVideo = io.sockets.adapter.rooms['room-' + socket.roomnum].currVideo.vimeo
-                break;
-            case 3:
-                var currVideo = io.sockets.adapter.rooms['room-' + socket.roomnum].currVideo.html5
-                break;
-            default:
-                console.log("Error invalid player id")
-        }
-        var currYT = io.sockets.adapter.rooms['room-' + socket.roomnum].currVideo.yt
 
-        // Change the video player to current One
-        switch (io.sockets.adapter.rooms['room-' + socket.roomnum].currPlayer) {
-            case 0:
-                // YouTube is default so do nothing
-                break;
-            case 1:
-                io.sockets.in("room-" + socket.roomnum).emit('createDaily', {});
-                break;
-            case 2:
-                io.sockets.in("room-" + socket.roomnum).emit('createVimeo', {});
-                break;
-            case 3:
-                io.sockets.in("room-" + socket.roomnum).emit('createHTML5', {});
-                break;
-            default:
-                console.log("Error invalid player id")
-        }
+        var currVideo = io.sockets.adapter.rooms['room-' + socket.roomnum].currVideo.yt
 
         // Change the video to the current one
         socket.emit('changeVideoClient', {
@@ -255,7 +210,7 @@ io.sockets.on('connection', function(socket) {
         // Get time from host which calls change time for that socket
         if (socket.id != host) {
             //socket.broadcast.to(host).emit('getTime', { id: socket.id });
-            console.log("call the damn host " + host)
+            console.log("call the host " + host)
 
             // Set a timeout so the video can load before it syncs
             setTimeout(function() {
@@ -266,29 +221,14 @@ io.sockets.on('connection', function(socket) {
             // Push to users in the room
             io.sockets.adapter.rooms['room-' + socket.roomnum].users.push(socket.username)
 
-            // socket.emit('changeVideoClient', {
-            //     videoId: currVideo
-            // });
-
-            // This calls back the function on the host client
-            //callback(true)
-
-            // DISABLE CONTROLS - DEPRECATED
-            // socket.emit('hostControls');
         } else {
             console.log("I am the host")
-            //socket.emit('auto sync');
-
-            // Auto syncing is not working atm
-            // socket.broadcast.to(host).emit('auto sync');
         }
 
         // Update online users
         updateRoomUsers(socket.roomnum)
 
         // This is all of the rooms
-        // io.sockets.adapter.rooms['room-1'].currVideo = "this is the video"
-        // console.log(io.sockets.adapter.rooms['room-1']);
     });
     // ------------------------------------------------------------------------
 
@@ -332,39 +272,18 @@ io.sockets.on('connection', function(socket) {
     socket.on('play next', function(data, callback) {
         var videoId = "QUEUE IS EMPTY"
         if (io.sockets.adapter.rooms['room-' + socket.roomnum] !== undefined) {
-            switch (io.sockets.adapter.rooms['room-' + socket.roomnum].currPlayer) {
-                case 0:
                     if (io.sockets.adapter.rooms['room-' + socket.roomnum].queue.yt.length > 0) {
                         // Gets the video id from the room object
                         videoId = io.sockets.adapter.rooms['room-' + socket.roomnum].queue.yt.shift().videoId
                     }
-                    break;
-                case 1:
-                    if (io.sockets.adapter.rooms['room-' + socket.roomnum].queue.dm.length > 0) {
-                        videoId = io.sockets.adapter.rooms['room-' + socket.roomnum].queue.dm.shift().videoId
-                    }
-                    break;
-                case 2:
-                    if (io.sockets.adapter.rooms['room-' + socket.roomnum].queue.dm.length > 0) {
-                        videoId = io.sockets.adapter.rooms['room-' + socket.roomnum].queue.vimeo.shift().videoId
-                    }
-                    break;
-                case 3:
-                    if (io.sockets.adapter.rooms['room-' + socket.roomnum].queue.html5.length > 0) {
-                        videoId = io.sockets.adapter.rooms['room-' + socket.roomnum].queue.html5.shift().videoId
-                    }
-                    break;
-                default:
-                    console.log("Error invalid player id")
             }
-            // console.log(videoId)
+
             // Remove video from the front end
             updateQueueVideos()
             callback({
                 videoId: videoId
             })
-        }
-    });
+        });
 
     // Sync video
     socket.on('sync video', function(data) {
@@ -392,8 +311,6 @@ io.sockets.on('connection', function(socket) {
             var user = data.user
             var videoId = data.videoId
             var title = ""
-            switch (io.sockets.adapter.rooms['room-' + socket.roomnum].currPlayer) {
-                case 0:
                     // See yt.js file
                     socket.emit('get title', {
                         videoId: videoId,
@@ -410,30 +327,9 @@ io.sockets.on('connection', function(socket) {
                         // Update front end
                         updateQueueVideos()
                     })
-                    break;
-                case 1:
-                    io.sockets.adapter.rooms['room-' + socket.roomnum].queue.dm.push({
-                        videoId: videoId,
-                        title: title
-                    })
-                    break;
-                case 2:
-                    io.sockets.adapter.rooms['room-' + socket.roomnum].queue.vimeo.push({
-                        videoId: videoId,
-                        title: title
-                    })
-                    break;
-                case 3:
-                    io.sockets.adapter.rooms['room-' + socket.roomnum].queue.html5.push({
-                        videoId: videoId,
-                        title: title
-                    })
-                    break;
-                default:
-                    console.log("Error invalid player id")
+
             }
-        }
-    })
+        })
 
     // Enqueue playlist
     // Gets all of the playlist videos and enqueues them
@@ -442,24 +338,12 @@ io.sockets.on('connection', function(socket) {
         if (io.sockets.adapter.rooms['room-' + socket.roomnum] !== undefined) {
             var user = data.user
             var playlistId = data.playlistId
-            switch (io.sockets.adapter.rooms['room-' + socket.roomnum].currPlayer) {
-                case 0:
                     // See yt.js file
                     socket.emit('get playlist videos', {
                         playlistId: playlistId,
                         user: user,
                         api_key: YT3_API_KEY
                     })
-                    break;
-                case 1:
-                    break;
-                case 2:
-                    break;
-                case 3:
-                    break;
-                default:
-                    console.log("Error invalid player id")
-            }
         }
     })
 
