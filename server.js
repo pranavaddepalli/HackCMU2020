@@ -627,7 +627,7 @@ io.sockets.on('connection', function(socket) {
                 break;
                 // Beta Message Alert
             case 3:
-                console.log("yoyoyoyoyo")
+                console.log("beta")
                 io.sockets.in("room-" + socket.roomnum).emit('betaNotify', {})
                 break;
             default:
