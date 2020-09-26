@@ -491,6 +491,12 @@ io.sockets.on('connection', function(socket) {
 
     var discMsg = "";
     var author = "";
+    // Parse URL-encoded bodies (as sent by HTML forms)
+app.use(express.urlencoded());
+
+// Parse JSON bodies (as sent by API clients)
+app.use(express.json());
+
     // for api to auto populate chat with discord messages
     app.post('/discordmsg/:message', function(req, res) {
         discMsg = req.params.message
