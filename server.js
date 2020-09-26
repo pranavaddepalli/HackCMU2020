@@ -170,6 +170,9 @@ io.sockets.on('connection', function(socket) {
                 defaultVid = vidURL;
             }
 
+            // reset vidURL to prevent setting a default for every socket
+            vidURL = "";
+
             io.sockets.adapter.rooms['room-' + socket.roomnum].currVideo = {
                 yt: defaultVid,
             }
