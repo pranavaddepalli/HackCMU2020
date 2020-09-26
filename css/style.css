@@ -422,25 +422,3 @@ textarea.input-sm, select[multiple].input-sm {
 .hide {
     display: none;
 }
-
-.navBanner {
-   background-color: #5F5376;
-   text-align: center;
-   top: 0px;
-   height: 50px;
-   position: absolute;
-   width: 100%;
-
-}
-
-.navFont {
-   color:#DEDEDE;
-   text-align: center;
-   font-size: 30px;
-}
-
-.normalText {
-   color: white;
-   text-align: center;
-   font-size: 30px;
-}
