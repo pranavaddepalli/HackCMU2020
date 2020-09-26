@@ -10,6 +10,7 @@ rooms = [];
 // Store all of the sockets and their respective room numbers
 userrooms = {}
 
+// in config vars on Heroku
 YT3_API_KEY = process.env.YT3_API_KEY;
 DM_API_KEY = process.env.DM_API_KEY;
 
