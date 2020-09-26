@@ -50,54 +50,79 @@
 <body id="Home" style="background-image: url('Wallpaper.jpg');">
 
     <!-- Navigation -->
-    <div class="navBanner">
-        <h1 class="navFont" href="#Home">s p e c t r e</h1>
-    </div>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand js-scroll-trigger" href="#Home"><img src="img/logo.png" alt="Vynchronize logo" height="40" width="40"> Vynchronize</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <!-- <li class="nav-item active">
+              <a class="nav-link js-scroll-trigger" href="#Home">Home
+                <span class="sr-only">(current)</span>
+              </a>
+            </li> -->
+                    <li class="nav-item">
+                        <a id="chat-nav" class="nav-link js-scroll-trigger hide" href="#messageArea">Chatroom</a>
+                    </li>
+                    <li class="nav-item">
+                        <a id="about-nav" class="nav-link js-scroll-trigger hide" href="#about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a id="contact-nav" class="nav-link js-scroll-trigger hide" href="#contact">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a target="_blank" rel="noopener noreferrer" class="nav-link js-scroll-trigger" href="https://www.facebook.com/vynchronize">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a target="_blank" rel="noopener noreferrer" class="nav-link js-scroll-trigger" href="https://github.com/kyle8998/Vynchronize">
+                            <i class="fab fa-github"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 
     <!-- Page Content -->
     <div class="container">
 
+        <!-- Loading page -->
+        <!-- Loader is currently dependent on the dailymotion api because it is the slowest -->
+        <!--<div id="loading"></div> -->
+
         <!-- User Form (First Page) -->
-        <div id="userFormArea">
-            <div>
+        <div id="userFormArea" class="row">
+            <div class="col-md-12">
                 <!-- ADD DESCRIPTION HERE -->
-                <p style="color: #DEDEDE; text-align: center; font-size: 30px;">Welcome.</h2>
-                    <br/>
-                    <br/>
-                    <br/>
+                <h2>Welcome to Vynchronize</h2>
+                <p class="lead">The hot new video synchronization platform used to watch videos in realtime with friends!</p>
+                <hr style="height:20pt; visibility:hidden;" />
+
+                <h2> Join a Room! </h2>
                 <form id="userForm">
                     <div class="form-group">
-                        <div class="row justify-content-center">
-                            <p style="color:red; margin-bottom: 0px" id="missinginfo"></p>
-                            <br/>
-                            <label style="color: #DEDEDE; text-align: center; font-size: 15px;">Your Name</label>
-                        </div>
-                        <div class="row justify-content-center">
-                            <input class="form-control form control-lg col-sm-4" id="username"/>
-                        </div>
+                        <p style="color:red; margin-bottom: 0px" id="missinginfo"></p>
+                        <label>Enter Name</label>
+                        <input class="form-control" id="username" />
                         <br />
+                        <p style="color:red; margin-bottom: 0px" id="missinginfo2"></p>
+                        <label>Enter Room ID (Default 1)</label>
+                        <button type="button" onClick="randomroom()" class="btn btn-primary random">Random</button>
                         <br/>
-                        
-                        <div class="row justify-content-center">
-                            <p style="color:red; margin-bottom: 0px" id="missinginfo2"></p>
-                            <br/>
-                            <label style="color: #DEDEDE; text-align: center; font-size: 15px;">Room Code</label>
-                        </div>
-                        <div class="row justify-content-center">
-                            <input class="form-control form control-lg col-sm-3" id="roomnum" />
-                            <button type="button" onClick="randomroom()" style="margin-left: 10px" class="btn btn-outline-info">We'll Pick</button>
-                        </div>
+                        <input class="form-control" id="roomnum" />
                         <br/>
-                        <br/>
-                        <br/>
-                        <div class="row justify-content-center">
-                            <input style="margin-top: 10px;" type="submit" class="btn btn-lg btn-outline-info" value="I'm Ready" />
-                        </div>
+
+                        <input style="margin-top: 10px;" type="submit" class="btn btn-primary" value="Enter" />
                         <hr style="height:65pt; visibility:hidden;" />
                     </div>
                 </form>
             </div>
         </div>
+
         <div id="roomArea">
             <!-- Heading Row -->
             <div class="row my-4" style="margin-top: 0px !important;">
