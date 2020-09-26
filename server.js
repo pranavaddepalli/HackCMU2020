@@ -29,7 +29,7 @@ console.log('Server Started . . .');
 
 app.get('/api/:vidURL', function(req, res) {
     given_URL = req.params.vidURL
-    res.send(given_URL);
+    res.send(given_URL); 
 });
 
 app.get('/:room', function(req, res) {
