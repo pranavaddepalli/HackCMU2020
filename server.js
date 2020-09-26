@@ -505,7 +505,6 @@ io.sockets.on('connection', function(socket) {
 
     app.get('/discordfrontendmsg', function(req, res) {
         res.send(discMsg);
-        discMsg = "";
     });
         
     

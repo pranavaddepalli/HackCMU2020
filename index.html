@@ -404,7 +404,7 @@
             };
             xhttp.open("GET", "/discordfrontendmsg", true);
             xhttp.send();
-
+            console.log('dmsg ' + discordmsgfrombackend);
             if(discordmsgfrombackend.length > 0){
                 socket.emit('send dmessage', discordmsgfrombackend);               
             }
