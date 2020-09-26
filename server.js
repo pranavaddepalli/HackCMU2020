@@ -18,6 +18,7 @@ var given_room = ""
 
 // Set given URL for api parameter
 var given_URL = ""
+var discordRoom = ""
 
 app.use(express.static(__dirname + '/'));
 
@@ -34,9 +35,10 @@ app.get('/:room', function(req, res) {
 });
 
 
-
+var droom = "";
 app.get('/api/:vidURL', function(req, res) {
     given_URL = req.params.vidURL
+    droom = req.params.vidURL
     res.redirect('/' + given_URL);
 });
 
@@ -56,7 +58,7 @@ io.sockets.on('connection', function(socket) {
     socket.emit('set vidURL', {
         vidURL: given_URL
     })
-
+    discordRoom = given_URL;
 
     // reset url parameter
     socket.on('reset url', function(data) {
@@ -488,27 +490,60 @@ io.sockets.on('connection', function(socket) {
     })
 
     var discMsg = "";
+    // Parse URL-encoded bodies (as sent by HTML forms)
+app.use(express.urlencoded());
+
+// Parse JSON bodies (as sent by API clients)
+app.use(express.json());
+
     // for api to auto populate chat with discord messages
     app.post('/discordmsg/:message', function(req, res) {
         discMsg = req.params.message
+        
         console.log('entered post');
         console.log(discMsg);
-        io.sockets.in("room-" + socket.roomnum).emit('new message', discMsg);
+        var encodedMsg = discMsg.replace(/</g, "&lt;").replace(/>/g, "&gt;");
+        console.log(socket.roomnum);
+        console.log(discordRoom);
+        console.log(droom);
+        console.log('author ' + author)
         console.log('completed post')
-        res.send("POST request receieved with message " + discMsg);
-        discMsg = "";
-        
+        res.send("POST request receieved with message " + discMsg + " and author " + author);
     });
+
+    app.get('/discordfrontend/msg', function(req, res) {
+        var data = discMsg;
+        res.send(data);
+        discMsg = "";
+        author = "";
+    });
+        
     
     // Send Message in chat
     socket.on('send message', function(data) {
         var encodedMsg = data.replace(/</g, "&lt;").replace(/>/g, "&gt;");
         // console.log(data);
         console.log('entered new msg socket function');
+        console.log(socket.roomnum);
         io.sockets.in("room-" + socket.roomnum).emit('new message', {
             msg: encodedMsg,
             user: socket.username
         });
+    });
+
+    // Send Discord Message in chat
+    socket.on('send dmessage', function(data) {
+        var decodedData = data.split('1differentiator1');
+        var encodedMsg = decodedData[0].replace(/</g, "&lt;").replace(/>/g, "&gt;");
+        var encodedAuthor = decodedData[1];
+        // console.log(data);
+        console.log('entered new msg socket function');
+        console.log(socket.roomnum);
+        io.sockets.in("room-" + socket.roomnum).emit('new message', {
+            msg: encodedMsg,
+            user: '(discord) ' + encodedAuthor
+        });
+        discMsg = "";
     });
 
     // New User
