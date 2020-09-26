@@ -83,7 +83,7 @@ socket.on('emptyQueueNotify', function(data) {
 })
 
 // Beta Message (3)
-socket.on('betaNotify', function(data) {
+/*socket.on('betaNotify', function(data) {
     console.log("Beta Notify Alert")
 
     $.notify({
@@ -105,7 +105,7 @@ socket.on('betaNotify', function(data) {
         spacing: 10,
         z_index: 1031,
     });
-})
+}) */
 
 //------------------------------------------------------------------------------
 // Not part of the server function
@@ -206,7 +206,7 @@ function invalidURL() {
     })
 }
 
-function betaAlert() {
+/*function betaAlert() {
     $.notify({
         title: '<strong>Warning: </strong>',
         icon: 'fas fa-trash',
@@ -225,5 +225,5 @@ function betaAlert() {
         offset: 20,
         spacing: 10,
         z_index: 1031,
-    })
-}
+    }) 
+} */

@@ -1,4 +1,4 @@
-var io = require('../../server').io
+/*var io = require('../../server').io
 var socket = require('../../server').socket
 
 // CURRENTLY NOT BEING USED
@@ -28,4 +28,4 @@ module.exports = {
             });
         }
 
-}
+}*/

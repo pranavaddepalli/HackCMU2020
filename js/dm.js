@@ -1,4 +1,4 @@
-var dailyPlayer
+/* var dailyPlayer
 
 setTimeout(function() {
     DM.init({
@@ -94,4 +94,4 @@ function dailyPlay() {
         dailyPlayer.play();
     } else
         dailyPlayer.pause();
-}
+} */
