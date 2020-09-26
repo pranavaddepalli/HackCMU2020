@@ -71,6 +71,9 @@ io.sockets.on('connection', function(socket) {
             updateUsernames();
         }
 
+        // reset the default video
+        vidURL = "";
+
         connections.splice(connections.indexOf(socket), 1);
         console.log(socket.id + ' Disconnected: %s sockets connected', connections.length);
 
