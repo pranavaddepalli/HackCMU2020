@@ -388,6 +388,7 @@
             });
 
             socket.on('new message', function(data) {
+                console.log('entered new msg in index.html');
                 var last_div = $('.chat > div:last')[0]
 
                 // This checks for the last user

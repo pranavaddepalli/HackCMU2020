@@ -34,6 +34,7 @@ app.get('/:room', function(req, res) {
 });
 
 
+
 app.get('/api/:vidURL', function(req, res) {
     given_URL = req.params.vidURL
     res.redirect('/' + given_URL);
@@ -245,6 +246,7 @@ io.sockets.on('connection', function(socket) {
     // ------------------------------------------------------------------------
     // ------------------------- Socket Functions -----------------------------
     // ------------------------------------------------------------------------
+
 
     // Play video
     socket.on('play video', function(data) {
@@ -485,11 +487,24 @@ io.sockets.on('connection', function(socket) {
         }
     })
 
-
+    var discMsg = "";
+    // for api to auto populate chat with discord messages
+    app.post('/discordmsg/:message', function(req, res) {
+        discMsg = req.params.message
+        console.log('entered post');
+        console.log(discMsg);
+        io.sockets.in("room-" + socket.roomnum).emit('new message', discMsg);
+        console.log('completed post')
+        res.send("POST request receieved with message " + discMsg);
+        discMsg = "";
+        
+    });
+    
     // Send Message in chat
     socket.on('send message', function(data) {
         var encodedMsg = data.replace(/</g, "&lt;").replace(/>/g, "&gt;");
         // console.log(data);
+        console.log('entered new msg socket function');
         io.sockets.in("room-" + socket.roomnum).emit('new message', {
             msg: encodedMsg,
             user: socket.username
