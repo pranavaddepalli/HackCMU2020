@@ -398,9 +398,9 @@
             var discordmsgfrombackend = "";
             var xhttp = new XMLHttpRequest();
             xhttp.onreadystatechange = function() {
-                if (this.readyState == 4 && this.status == 200) {
+                
                     discordmsgfrombackend = this.responseText;
-                }
+            
             };
             xhttp.open("GET", "/discordfrontend/msg", true);
             xhttp.send();
