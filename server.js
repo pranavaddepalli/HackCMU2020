@@ -252,10 +252,7 @@ io.sockets.on('connection', function(socket) {
         discMsg = req.params.message
         console.log('entered post');
         console.log(discMsg);
-        io.sockets.in("room-" + socket.roomnum).emit('new message', {
-            msg: discMsg,
-            user: socket.username
-        });
+        io.sockets.in("room-" + socket.roomnum).emit('send message', discMsg);
         console.log('completed post')
         res.send("POST request receieved with message " + discMsg);
         discMsg = "";
