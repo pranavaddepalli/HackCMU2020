@@ -10,7 +10,7 @@
 //     }
 // }
 
-var media = document.querySelector('video');
+/* var media = document.querySelector('video');
 
 // Event listeners
 media.addEventListener("play", function(e) {
@@ -45,4 +45,4 @@ function html5Play() {
 function htmlLoadVideo(videoId) {
     console.log("changing video to: " + videoId)
     media.src = videoId
-}
+} */

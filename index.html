@@ -2,18 +2,7 @@
 <html lang="en">
 
 <head>
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-121783460-1"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
 
-        function gtag() {
-            dataLayer.push(arguments);
-        }
-        gtag('js', new Date());
-
-        gtag('config', 'UA-121783460-1');
-    </script>
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -39,7 +28,7 @@
 
     <link href="css/style.css" rel="stylesheet">
     <link href="css/mobile-style.css" rel="stylesheet">
-    <link href="css/html5player.css" rel="stylesheet">
+    <!-- <link href="css/html5player.css" rel="stylesheet"> -->
 
     <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="96x96" href="img/favicon-96x96.png">
@@ -47,7 +36,7 @@
 
 </head>
 
-<body class="bg-light" id="Home">
+<body id="Home" style="background-image: url('Wallpaper.jpg');">
 
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
@@ -92,31 +81,44 @@
 
         <!-- Loading page -->
         <!-- Loader is currently dependent on the dailymotion api because it is the slowest -->
-        <div id="loading"></div>
+        <!--<div id="loading"></div> -->
 
         <!-- User Form (First Page) -->
         <div id="userFormArea" class="row">
-            <div class="col-md-12">
-                <!-- ADD DESCRIPTION HERE -->
-                <h2>Welcome to Vynchronize</h2>
-                <p class="lead">The hot new video synchronization platform used to watch videos in realtime with friends!</p>
-                <hr style="height:20pt; visibility:hidden;" />
-
-                <h2> Join a Room! </h2>
+            <div>
+                <p style="color: #DEDEDE; text-align: center; font-size: 30px;">Welcome.</h2>
+                    <br/>
+                    <br/>
+                    <br/>
+   
                 <form id="userForm">
                     <div class="form-group">
-                        <p style="color:red; margin-bottom: 0px" id="missinginfo"></p>
-                        <label>Enter Name</label>
-                        <input class="form-control" id="username" />
+                        <div class="row justify-content-center">
+                            <p style="color:red; margin-bottom: 0px" id="missinginfo"></p>
+                            <br/>
+                            <label style="color: #DEDEDE; text-align: center; font-size: 15px;">Your Name</label>
+                        </div>
+                        <div class="row justify-content-center">
+                            <input class="form-control form control-lg col-sm-4" id="username"/>
+                        </div>
                         <br />
-                        <p style="color:red; margin-bottom: 0px" id="missinginfo2"></p>
-                        <label>Enter Room ID (Default 1)</label>
-                        <button type="button" onClick="randomroom()" class="btn btn-primary random">Random</button>
                         <br/>
-                        <input class="form-control" id="roomnum" />
+                        
+                        <div class="row justify-content-center">
+                            <p style="color:red; margin-bottom: 0px" id="missinginfo2"></p>
+                            <br/>
+                            <label style="color: #DEDEDE; text-align: center; font-size: 15px;">Room Code</label>
+                        </div>
+                        <div class="row justify-content-center">
+                            <input class="form-control form control-lg col-sm-3" id="roomnum" />
+                            <button type="button" onClick="randomroom()" style="margin-left: 10px" class="btn btn-outline-info">We'll Pick</button>
+                        </div>
                         <br/>
-
-                        <input style="margin-top: 10px;" type="submit" class="btn btn-primary" value="Enter" />
+                        <br/>
+                        <br/>
+                        <div class="row justify-content-center">
+                            <input style="margin-top: 10px;" type="submit" class="btn btn-lg btn-outline-info" value="Enter" />
+                        </div>
                         <hr style="height:65pt; visibility:hidden;" />
                     </div>
                 </form>
@@ -132,20 +134,6 @@
                     <div class="mobile-hide"><b>Mobile User</b>, please play the video once manually to give the browser permission to control the video player. </div>
                     <!-- <hr style="height:0pt; visibility:hidden;" /> -->
 
-                    <div style="margin: 10px" class="dropdown">
-                        <button style="background-color: #007bff" class="btn btn-info dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i class="fas fa-video"></i> Player
-                        </button>
-                        <div class="form-control dropdown-menu scrollable-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" onclick="changePlayer(roomnum, 0)"><i class="fab fa-youtube"></i> YouTube</a>
-                            <a class="dropdown-item" onclick="changePlayer(roomnum, 1)"><img width="14px" height="14px" src="img/dailymotion-logo.svg" alt="Daily Motion Logo"> Daily Motion</a>
-                            <a class="dropdown-item" onclick="changePlayer(roomnum, 2)"><i class="fab fa-vimeo"></i> Vimeo</a>
-                            <a class="dropdown-item" onclick="changePlayer(roomnum, 3)"><i class="fas fa-file-video"></i> HTML5 Player (.mp4/.webm) (Beta)</a>
-                        </div>
-                    </div>
-
-
-
                     <!-- <br/> <b>Note:</b> Mobile web browsers do not support autoplay. Host can control player natively. -->
 
                     <!-- INVITE MOVED TO MODAL -->
@@ -158,30 +146,12 @@
                         <div class="video" id="player"></div>
                         <!-- <iframe class="video" id="player" allowfullscreen="0" rel="0" width="640" height="360" src="https://www.youtube.com/embed/M7lc1UVf-VE?enablejsapi=1" frameborder="1" style="border: solid 4px #37474F"></iframe> -->
                     </div>
-                    <div id='dailyArea'>
-                        <div class="video" id="player-daily"></div>
-                    </div>
-                    <div id='vimeoArea'>
-                        <iframe class="video" id="player-vimeo" src="https://player.vimeo.com/video/76979871" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-                    </div>
-                    <div id='HTML5Area'>
-                        <div class="html5player">
-                            <video src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" width="640" height="360" class="video html5video" id="html5src" controls>
-                            <!-- <source src="video/sintel-short.mp4" type="video/mp4">
-                            <source src="video/sintel-short.webm" type="video/webm"> -->
-                            <!-- fallback content here -->
-                            </video>
-                        </div>
-                    </div>
-
                     <!----------------------------------- PLAYER AREA ----------------------------------->
                     <!-- <hr> -->
                     <div>
                         <button id="playButton" onclick="playVideo(roomnum)" style="margin-top:.5rem" class="btn btn-primary"><i class="fa fa-play"></i> Play / <i class="fa fa-pause"></i> Pause</button>
 
                         <button id="syncbutton" onclick="syncVideo(roomnum);syncAlert()" style="margin-top:.5rem" class="btn btn-primary"><i class="fa fa-sync"></i> Sync</button>
-
-                        <button id="loveButton" onclick="loveLive(roomnum)" style="margin-top:.5rem" class="btn btn-primary"><i class="far fa-heart"></i> Random K-pop</button>
                         <!-- <br/> -->
                         <button id="hostbutton" onclick="changeHost(roomnum)" style="margin-top:.5rem" class="btn btn-primary"><i class="fas fa-users"></i> Make me the host!</button>
                         <!-- Turn off the lights -->
@@ -310,100 +280,100 @@
                 </div>
                 <!-- /.col-md-4 -->
             </div>
-
             <!-- /.row -->
 
-            <!-- Call to Action Well -->
-            <div class="card text-white bg-secondary my-4 text-center">
-                <div class="card-body">
-                    <p class="text-white m-0">*The synchronization may not be perfect! It's a work in progress, submit an issue on github if you wish to submit a bug report/suggestion.</p>
-                </div>
-            </div>
-
-            <!-- Content Row -->
-            <!-- <div class="row">
-        <div class="col-md-4 mb-4">
-          <div class="card h-100">
+           <!-- Call to Action Well -->
+           <div class="card text-white bg-secondary my-4 text-center">
             <div class="card-body">
-              <h2 class="card-title">Card One</h2>
-              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem magni quas ex numquam, maxime minus quam molestias corporis quod, ea minima accusamus.</p>
+                <p class="text-white m-0">*The synchronization may not be perfect! It's a work in progress, submit an issue on github if you wish to submit a bug report/suggestion.</p>
             </div>
-            <div class="card-footer">
-              <a href="#" class="btn btn-primary">More Info</a>
-            </div>
-          </div>
-        </div> -->
-            <!-- /.col-md-4 -->
-            <!-- <div class="col-md-4 mb-4">
-          <div class="card h-100">
-            <div class="card-body">
-              <h2 class="card-title">Card Two</h2>
-              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod tenetur ex natus at dolorem enim! Nesciunt pariatur voluptatem sunt quam eaque, vel, non in id dolore voluptates quos eligendi labore.</p>
-            </div>
-            <div class="card-footer">
-              <a href="#" class="btn btn-primary">More Info</a>
-            </div>
-          </div>
-        </div> -->
-            <!-- /.col-md-4 -->
-            <!-- <div class="col-md-4 mb-4">
-          <div class="card h-100">
-            <div class="card-body">
-              <h2 class="card-title">Card Three</h2>
-              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem magni quas ex numquam, maxime minus quam molestias corporis quod, ea minima accusamus.</p>
-            </div>
-            <div class="card-footer">
-              <a href="#" class="btn btn-primary">More Info</a>
-            </div>
-          </div>
-        </div> -->
-            <!-- /.col-md-4 -->
-
-            <!-- </div> -->
-            <!-- /.row -->
-
-            <!-- <hr style="height:20pt; visibility:hidden;" /> -->
-            <section id="about" class="bg-light">
-                <hr style="height:100pt; visibility:hidden;" />
-
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-8 mx-auto">
-                            <h2>About Vynchronize</h2>
-                            <p class="lead">Vynchronize is a video synchronization platform created for viewing parties with friends!</p>
-                            <p> To use Vynchronize just enter your name and a shared room number with friends. Then all you have to do is select your video client (YouTube by default), enter a video ID, and click "Change Video". All video playback should
-                                be synchronized to everyone in the room! </p>
-                            <p> There is one host per room that can control the video client directly with the native player controls. Everyone else can still use them but it will only affect them until they hit sync!</p>
-                            <p> Have fun watching videos with friends!</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <hr style="height:20pt; visibility:hidden;" />
-
-            <section id="contact" class="bg-light">
-                <hr style="height:100pt; visibility:hidden;" />
-
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-8 mx-auto">
-                            <h2>Contact Me</h2>
-                            <p class="lead">Who Am I?</p>
-                            <p> I'm Kyle! A student and developer just trying build software for the everyday user! I developed Vynchronize because it was a problem that I needed to solve myself, and now I continue to build it for the those who enjoy using
-                                it! :)</p>
-                            <p> You can contact me directly at <a href="mailto:kylelim8998@gmail.com?Subject=Vynchronize">kylelim8998@gmail.com</a> if you have any questions, concerns, or just to say hi! If you want to submit a suggestion, please see the
-                                github issues page.</p>
-                            <p> Also I want to keep the website up and running with an ad-free experience because I hate ads too! I'm currently paying for servers and a domain, but they are expensive to a broke college kid. If you would like to donate click
-                                below! I appreciate the support!</p>
-                            <a href="https://www.paypal.me/kylelim"><button style="margin-top:.5rem" class="btn btn-primary"><i class="far fa-heart"></i> Donate</button></a>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <hr style="height:50pt; visibility:hidden;" />
-
         </div>
+
+        <!-- Content Row -->
+        <!-- <div class="row">
+    <div class="col-md-4 mb-4">
+      <div class="card h-100">
+        <div class="card-body">
+          <h2 class="card-title">Card One</h2>
+          <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem magni quas ex numquam, maxime minus quam molestias corporis quod, ea minima accusamus.</p>
+        </div>
+        <div class="card-footer">
+          <a href="#" class="btn btn-primary">More Info</a>
+        </div>
+      </div>
+    </div> -->
+        <!-- /.col-md-4 -->
+        <!-- <div class="col-md-4 mb-4">
+      <div class="card h-100">
+        <div class="card-body">
+          <h2 class="card-title">Card Two</h2>
+          <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod tenetur ex natus at dolorem enim! Nesciunt pariatur voluptatem sunt quam eaque, vel, non in id dolore voluptates quos eligendi labore.</p>
+        </div>
+        <div class="card-footer">
+          <a href="#" class="btn btn-primary">More Info</a>
+        </div>
+      </div>
+    </div> -->
+        <!-- /.col-md-4 -->
+        <!-- <div class="col-md-4 mb-4">
+      <div class="card h-100">
+        <div class="card-body">
+          <h2 class="card-title">Card Three</h2>
+          <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem magni quas ex numquam, maxime minus quam molestias corporis quod, ea minima accusamus.</p>
+        </div>
+        <div class="card-footer">
+          <a href="#" class="btn btn-primary">More Info</a>
+        </div>
+      </div>
+    </div> -->
+        <!-- /.col-md-4 -->
+
+        <!-- </div> -->
+        <!-- /.row -->
+
+        <!-- <hr style="height:20pt; visibility:hidden;" /> -->
+        <section id="about" class="bg-light">
+            <hr style="height:100pt; visibility:hidden;" />
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 mx-auto">
+                        <h2>About Vynchronize</h2>
+                        <p class="lead">Vynchronize is a video synchronization platform created for viewing parties with friends!</p>
+                        <p> To use Vynchronize just enter your name and a shared room number with friends. Then all you have to do is select your video client (YouTube by default), enter a video ID, and click "Change Video". All video playback should
+                            be synchronized to everyone in the room! </p>
+                        <p> There is one host per room that can control the video client directly with the native player controls. Everyone else can still use them but it will only affect them until they hit sync!</p>
+                        <p> Have fun watching videos with friends!</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <hr style="height:20pt; visibility:hidden;" />
+
+        <section id="contact" class="bg-light">
+            <hr style="height:100pt; visibility:hidden;" />
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 mx-auto">
+                        <h2>Contact Me</h2>
+                        <p class="lead">Who Am I?</p>
+                        <p> I'm Kyle! A student and developer just trying build software for the everyday user! I developed Vynchronize because it was a problem that I needed to solve myself, and now I continue to build it for the those who enjoy using
+                            it! :)</p>
+                        <p> You can contact me directly at <a href="mailto:kylelim8998@gmail.com?Subject=Vynchronize">kylelim8998@gmail.com</a> if you have any questions, concerns, or just to say hi! If you want to submit a suggestion, please see the
+                            github issues page.</p>
+                        <p> Also I want to keep the website up and running with an ad-free experience because I hate ads too! I'm currently paying for servers and a domain, but they are expensive to a broke college kid. If you would like to donate click
+                            below! I appreciate the support!</p>
+                        <a href="https://www.paypal.me/kylelim"><button style="margin-top:.5rem" class="btn btn-primary"><i class="far fa-heart"></i> Donate</button></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <hr style="height:50pt; visibility:hidden;" />
+
     </div>
+</div>
+
     <!-- /.container -->
 
     <!-- Footer -->
@@ -717,7 +687,7 @@
             document.getElementById('roomnum').value = Math.random().toString(36).substr(2, 12)
         }
     </script>
-
+    
     <!-- Bootstrap core JavaScript -->
     <script src="js/dependencies/jquery.min.js"></script>
     <script src="js/dependencies/bootstrap.bundle.min.js"></script>
@@ -737,13 +707,13 @@
     <!-- Youtube -->
     <script src="js/yt.js"></script>
     <!-- Daily Motion -->
-    <script src="https://api.dmcdn.net/all.js"></script>
-    <script src="js/dm.js"></script>
+    <!-- <script src="https://api.dmcdn.net/all.js"></script> -->
+    <!-- <script src="js/dm.js"></script> -->
     <!-- Vimeo -->
-    <script src="https://player.vimeo.com/api/player.js"></script>
-    <script src="js/vimeo.js"></script>
+    <!-- <script src="https://player.vimeo.com/api/player.js"></script> -->
+    <!-- <script src="js/vimeo.js"></script> -->
     <!-- HTML5 Player -->
-    <script src="js/html5.js"></script>
+    <!-- <script src="js/html5.js"></script> -->
 
 </body>
 

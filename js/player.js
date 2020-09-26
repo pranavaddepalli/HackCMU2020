@@ -21,7 +21,7 @@ socket.on('getPlayerData', function(data) {
                 caller: caller
             });
             break;
-        case 1:
+        /* case 1:
             var currTime = dailyPlayer.currentTime
             var state = dailyPlayer.paused;
             socket.emit('get host data', {
@@ -68,7 +68,7 @@ socket.on('getPlayerData', function(data) {
                 state: state,
                 caller: caller
             });
-            break;
+            break; */
         default:
             console.log("Error invalid player id")
     }
@@ -82,14 +82,14 @@ socket.on('createYoutube', function(data) {
         // playerIn.innerHTML = "<iframe id=\"player\"allowfullscreen=\"0\"width=\"640\" height=\"360\"src=\"https://www.youtube.com/embed/M7lc1UVf-VE?enablejsapi=1\"frameborder=\"0\"style=\"border: solid 4px #37474F\"></iframe>"
         // onYouTubeIframeAPIReady()
 
-        var daily = document.getElementById('dailyArea');
+        /*var daily = document.getElementById('dailyArea');
         daily.style.display = 'none';
 
         var vimeo = document.getElementById('vimeoArea');
         vimeo.style.display = 'none';
 
         var html5 = document.getElementById('HTML5Area');
-        html5.style.display = 'none';
+        html5.style.display = 'none'; */
 
         var you = document.getElementById('playerArea');
         you.style.display = 'block';
@@ -122,7 +122,7 @@ socket.on('createYoutube', function(data) {
 });
 
 // Create Daily Motion Player
-socket.on('createDaily', function(data) {
+/* socket.on('createDaily', function(data) {
     console.log("i am in create daily")
     // player.destroy()
     if (currPlayer != 1) {
@@ -230,7 +230,7 @@ socket.on('createHTML5', function(data) {
 
         betaAlert()
     }
-});
+}); */
 
 
 // changeSinglePlayer(roomnum, playerId){

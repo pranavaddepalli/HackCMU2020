@@ -17,7 +17,7 @@ socket.on('justPlay', function(data) {
                 player.playVideo()
             }
             break;
-        case 1:
+        /*case 1:
             if (dailyPlayer.paused) {
                 dailyPlayer.play();
             }
@@ -40,7 +40,7 @@ socket.on('justPlay', function(data) {
             if (media.paused) {
                 media.play();
             }
-            break;
+            break;*/
     }
 });
 
@@ -57,7 +57,7 @@ socket.on('justPause', function(data) {
         case 0:
             player.pauseVideo()
             break;
-        case 1:
+        /*case 1:
             dailyPlayer.pause()
             break;
         case 2:
@@ -76,7 +76,7 @@ socket.on('justPause', function(data) {
             break;
         case 3:
             media.pause()
-            break;
+            break;*/
     }
     player.pauseVideo()
 });
@@ -105,7 +105,7 @@ socket.on('justSeek', function(data) {
                 player.playVideo()
             }
             break;
-        case 1:
+        /*case 1:
             var clientTime = dailyPlayer.currentTime;
             if (clientTime < currTime - .2 || clientTime > currTime + .2) {
                 dailyPlayer.seek(currTime);
@@ -143,7 +143,7 @@ socket.on('justSeek', function(data) {
                 media.currentTime = currTime
             }
             // playOther(roomnum)
-            break;
+            break;*/
     }
 });
 
