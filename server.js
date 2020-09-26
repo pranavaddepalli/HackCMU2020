@@ -34,9 +34,10 @@ app.get('/:room', function(req, res) {
 });
 
 
-app.get('/api/bot/:vidURL', function(req, res) {
+app.get('/api/:vidURL', function(req, res) {
     given_URL = req.params.vidURL
-    res.send(__dirname + '/index.html'); 
+    res.redirect('/room');
+
 });
 
 var roomno = 1;
