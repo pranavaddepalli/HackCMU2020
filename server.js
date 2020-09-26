@@ -246,17 +246,7 @@ io.sockets.on('connection', function(socket) {
     // ------------------------------------------------------------------------
     // ------------------------- Socket Functions -----------------------------
     // ------------------------------------------------------------------------
-    var discMsg = "";
-    // for api to auto populate chat with discord messages
-    app.post('/discordmsg/:message', function(req, res) {
-        discMsg = req.params.message
-        console.log('entered post');
-        console.log(discMsg);
-        io.sockets.in("room-" + socket.roomnum).emit('send message', discMsg);
-        console.log('completed post')
-        res.send("POST request receieved with message " + discMsg);
-        discMsg = "";
-    });
+
 
     // Play video
     socket.on('play video', function(data) {
@@ -497,6 +487,19 @@ io.sockets.on('connection', function(socket) {
         }
     })
 
+    var discMsg = "";
+    // for api to auto populate chat with discord messages
+    app.post('/discordmsg/:message', function(req, res) {
+        discMsg = req.params.message
+        console.log('entered post');
+        console.log(discMsg);
+        io.sockets.in("room-" + socket.roomnum).emit('new message', discMsg);
+        console.log('completed post')
+        res.send("POST request receieved with message " + discMsg);
+        discMsg = "";
+        
+    });
+    
     // Send Message in chat
     socket.on('send message', function(data) {
         var encodedMsg = data.replace(/</g, "&lt;").replace(/>/g, "&gt;");
