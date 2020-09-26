@@ -93,18 +93,32 @@
    
                 <form id="userForm">
                     <div class="form-group">
-                        <p style="color:red; margin-bottom: 0px" id="missinginfo"></p>
-                        <label>Enter Name</label>
-                        <input class="form-control" id="username" />
+                        <div class="row justify-content-center">
+                            <p style="color:red; margin-bottom: 0px" id="missinginfo"></p>
+                            <br/>
+                            <label style="color: #DEDEDE; text-align: center; font-size: 15px;">Your Name</label>
+                        </div>
+                        <div class="row justify-content-center">
+                            <input class="form-control form control-lg col-sm-4" id="username"/>
+                        </div>
                         <br />
-                        <p style="color:red; margin-bottom: 0px" id="missinginfo2"></p>
-                        <label>Enter Room ID (Default 1)</label>
-                        <button type="button" onClick="randomroom()" class="btn btn-primary random">Random</button>
                         <br/>
-                        <input class="form-control" id="roomnum" />
+                        
+                        <div class="row justify-content-center">
+                            <p style="color:red; margin-bottom: 0px" id="missinginfo2"></p>
+                            <br/>
+                            <label style="color: #DEDEDE; text-align: center; font-size: 15px;">Room Code</label>
+                        </div>
+                        <div class="row justify-content-center">
+                            <input class="form-control form control-lg col-sm-3" id="roomnum" />
+                            <button type="button" onClick="randomroom()" style="margin-left: 10px" class="btn btn-outline-info">We'll Pick</button>
+                        </div>
                         <br/>
-
-                        <input style="margin-top: 10px;" type="submit" class="btn btn-primary" value="Enter" />
+                        <br/>
+                        <br/>
+                        <div class="row justify-content-center">
+                            <input style="margin-top: 10px;" type="submit" class="btn btn-lg btn-outline-info" value="Enter" />
+                        </div>
                         <hr style="height:65pt; visibility:hidden;" />
                     </div>
                 </form>
