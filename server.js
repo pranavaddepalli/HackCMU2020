@@ -250,9 +250,13 @@ io.sockets.on('connection', function(socket) {
     // for api to auto populate chat with discord messages
     app.post('/discordmsg/:message', function(req, res) {
         discMsg = req.params.message
-        socket.emit('discord msg', {
-            data: discMsg
+        console.log('entered post');
+        console.log(discMsg);
+        io.sockets.in("room-" + socket.roomnum).emit('new message', {
+            msg: discMsg,
+            user: socket.username
         });
+        console.log('completed post')
         res.send("POST request receieved with message " + discMsg);
         discMsg = "";
     });
@@ -495,16 +499,6 @@ io.sockets.on('connection', function(socket) {
             socket.broadcast.to(host).emit('getData')
         }
     })
-
-    // Discord integration
-    socket.on('discord msg', function(data){
-        console.log('entered discordmsg socket function');
-        var discordmessage = data;
-        io.sockets.in("room-" + socket.roomnum).emit('new message', {
-            msg: discordmessage,
-            user: "from discord"
-        });
-    });
 
     // Send Message in chat
     socket.on('send message', function(data) {
