@@ -497,7 +497,8 @@ io.sockets.on('connection', function(socket) {
         var encodedMsg = discMsg.replace(/</g, "&lt;").replace(/>/g, "&gt;");
         console.log(socket.roomnum);
         console.log(discordRoom);
-        io.sockets.in("room-" + discordRoom).emit('send message', {
+        console.log(vidURL);
+        io.sockets.in("room-" + vidURL).emit('send message', {
             msg: encodedMsg,
             user: 'from discord'
         });
