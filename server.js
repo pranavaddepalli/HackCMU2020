@@ -18,6 +18,7 @@ var given_room = ""
 
 // Set given URL for api parameter
 var given_URL = ""
+var discordRoom = ""
 
 app.use(express.static(__dirname + '/'));
 
@@ -56,7 +57,7 @@ io.sockets.on('connection', function(socket) {
     socket.emit('set vidURL', {
         vidURL: given_URL
     })
-
+    discordRoom = given_URL;
 
     // reset url parameter
     socket.on('reset url', function(data) {
@@ -495,7 +496,7 @@ io.sockets.on('connection', function(socket) {
         console.log(discMsg);
         var encodedMsg = discMsg.replace(/</g, "&lt;").replace(/>/g, "&gt;");
         console.log(socket.roomnum);
-        io.sockets.in("room-" + socket.roomnum).emit('new message', {
+        io.sockets.in("room-" + socket.roomnum).emit('send message', {
             msg: encodedMsg,
             user: socket.username
         });
@@ -511,9 +512,10 @@ io.sockets.on('connection', function(socket) {
         // console.log(data);
         console.log('entered new msg socket function');
         console.log(socket.roomnum);
-        io.sockets.in("room-" + socket.roomnum).emit('new message', {
+        console.log(discordRoom);
+        io.sockets.in("room-" + discordRoom).emit('new message', {
             msg: encodedMsg,
-            user: socket.username
+            user: 'from discord'
         });
     });
 
