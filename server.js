@@ -275,20 +275,17 @@ io.sockets.on('connection', function(socket) {
     socket.on('play next', function(data, callback) {
         var videoId = "QUEUE IS EMPTY"
         if (io.sockets.adapter.rooms['room-' + socket.roomnum] !== undefined) {
-           
-                    if (io.sockets.adapter.rooms['room-' + socket.roomnum].queue.yt.length > 0) {
-                        // Gets the video id from the room object
-                        videoId = io.sockets.adapter.rooms['room-' + socket.roomnum].queue.yt.shift().videoId
-                    }
-                   
+            if (io.sockets.adapter.rooms['room-' + socket.roomnum].queue.yt.length > 0) {
+                // Gets the video id from the room object
+                videoId = io.sockets.adapter.rooms['room-' + socket.roomnum].queue.yt.shift().videoId
             }
-            // console.log(videoId)
-            // Remove video from the front end
-            updateQueueVideos()
-            callback({
-                videoId: videoId
-            })
         }
+        // console.log(videoId)
+        // Remove video from the front end
+        updateQueueVideos()
+        callback({
+            videoId: videoId
+        })
     });
 
     // Sync video
