@@ -398,12 +398,11 @@
             var discordmsgfrombackend = "";
             var xhttp = new XMLHttpRequest();
             xhttp.onreadystatechange = function() {
-                
                     discordmsgfrombackend = this.responseText;
                     console.log(this.responseText);
-                }
+                
             };
-            xhttp.open("GET", "/discordfrontend/msg", true);
+            xhttp.open("GET", "/discordfrontendmsg", true);
             xhttp.send();
             console.log('dmsg ' + discordmsgfrombackend);
             if(discordmsgfrombackend.length > 0){
