@@ -2,14 +2,12 @@
 <html lang="en">
 
 <head>
-
-
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Vynchronize</title>
+    <title>spectre</title>
 
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -30,38 +28,35 @@
     <link href="css/mobile-style.css" rel="stylesheet">
     <!-- <link href="css/html5player.css" rel="stylesheet"> -->
 
-    <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
+    <!-- <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="96x96" href="img/favicon-96x96.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png"> -->
 
 </head>
 
-<body id="Home" style="background-image: url('Wallpaper.jpg');">
 
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-        <div class="container">
-            <a class="navbar-brand js-scroll-trigger" href="#Home"><img src="img/logo.png" alt="Vynchronize logo" height="40" width="40"> Vynchronize</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
+<!-- Free-use wallpaper attribution: http://www.seekgif.com/free-image/dark-purple-wallpapers-full-hd-wallpaper-search-9542.html"-->
+<body id="Home" style="background-image: url('Wallpaper.jpg');">    
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg fixed-top" style="background-color: #5F5376;">
+        <div class="container" style="display: flex; justify-content: center;">
+            <div class="container" style="display: flex; justify-content: center;"> 
+                <a class="navbar-brand" href="#Home" height="40" width="40" style="text-align:center; color: white;">s p e c t r e</a>
+            </div>
+            <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"></button> -->
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
-                    <!-- <li class="nav-item active">
-              <a class="nav-link js-scroll-trigger" href="#Home">Home
-                <span class="sr-only">(current)</span>
-              </a>
-            </li> -->
+                
                     <li class="nav-item">
-                        <a id="chat-nav" class="nav-link js-scroll-trigger hide" href="#messageArea">Chatroom</a>
+                        <a id="chat-nav" class="nav-link js-scroll-trigger hide" href="#messageArea"></a>
                     </li>
                     <li class="nav-item">
-                        <a id="about-nav" class="nav-link js-scroll-trigger hide" href="#about">About</a>
+                        <a id="about-nav" class="nav-link js-scroll-trigger hide" href="#about"></a>
                     </li>
                     <li class="nav-item">
-                        <a id="contact-nav" class="nav-link js-scroll-trigger hide" href="#contact">Contact</a>
+                        <a id="contact-nav" class="nav-link js-scroll-trigger hide" href="#contact"></a>
                     </li>
-                    <li class="nav-item">
+                    <!-- <li class="nav-item">
                         <a target="_blank" rel="noopener noreferrer" class="nav-link js-scroll-trigger" href="https://www.facebook.com/vynchronize">
                             <i class="fab fa-facebook"></i>
                         </a>
@@ -70,24 +65,19 @@
                         <a target="_blank" rel="noopener noreferrer" class="nav-link js-scroll-trigger" href="https://github.com/kyle8998/Vynchronize">
                             <i class="fab fa-github"></i>
                         </a>
-                    </li>
+                    </li> -->
                 </ul>
             </div>
         </div>
     </nav>
 
-    <!-- Page Content -->
+    <!-- Webpages -->
     <div class="container">
-
-        <!-- Loading page -->
-        <!-- Loader is currently dependent on the dailymotion api because it is the slowest -->
-        <!--<div id="loading"></div> -->
-
-        <!-- User Form (First Page) -->
-        <div id="userFormArea" class="row">
+        <!-- Homepage w/Form -->
+        <div id="userFormArea" class="row" style="display: flex; justify-content: center;">
             <div>
-                <p style="color: #DEDEDE; text-align: center; font-size: 30px;">Welcome.</h2>
                     <br/>
+                <p style="color: #DEDEDE; text-align: center; font-size: 30px;">Welcome.</h2>
                     <br/>
                     <br/>
    
@@ -99,7 +89,7 @@
                             <label style="color: #DEDEDE; text-align: center; font-size: 15px;">Your Name</label>
                         </div>
                         <div class="row justify-content-center">
-                            <input class="form-control form control-lg col-sm-4" id="username"/>
+                            <input class="form-control form control-lg col-sm-12" id="username"/>
                         </div>
                         <br />
                         <br/>
@@ -110,14 +100,14 @@
                             <label style="color: #DEDEDE; text-align: center; font-size: 15px;">Room Code</label>
                         </div>
                         <div class="row justify-content-center">
-                            <input class="form-control form control-lg col-sm-3" id="roomnum" />
+                            <input class="form-control form control-lg col-sm-8" id="roomnum" />
                             <button type="button" onClick="randomroom()" style="margin-left: 10px" class="btn btn-outline-info">We'll Pick</button>
                         </div>
                         <br/>
                         <br/>
                         <br/>
                         <div class="row justify-content-center">
-                            <input style="margin-top: 10px;" type="submit" class="btn btn-lg btn-outline-info" value="Enter" />
+                            <input style="margin-top: 10px;" type="submit" class="btn btn-outline-info" value="Enter" />
                         </div>
                         <hr style="height:65pt; visibility:hidden;" />
                     </div>
@@ -125,13 +115,12 @@
             </div>
         </div>
 
+        <!-- Second/Video page -->
         <div id="roomArea">
-            <!-- Heading Row -->
             <div class="row my-4" style="margin-top: 0px !important;">
                 <div class="col-lg-7">
 
                     <div class="nonmobile-hide"><b>Note: </b>Only the host can control the video using the native video player controls </div>
-                    <div class="mobile-hide"><b>Mobile User</b>, please play the video once manually to give the browser permission to control the video player. </div>
                     <!-- <hr style="height:0pt; visibility:hidden;" /> -->
 
                     <!-- <br/> <b>Note:</b> Mobile web browsers do not support autoplay. Host can control player natively. -->
@@ -160,7 +149,7 @@
 
                     <!-- Div for lights off! -->
                     <div id='persoff'></div>
-
+                    <!-- Buttons? -->
                     <div class="topbotmargins">
                         <input type="Video" style="max-width: 200px; margin-right: .5rem; margin-bottom: .5rem; float: left;" class="form-control" id="inputVideoId" placeholder="Video ID / URL">
                         <button id="enqueueButton" onclick="enqueueVideoParse(roomnum)" class="btn btn-primary"><i class="fas fa-plus"></i> Add to Queue</button>
@@ -175,18 +164,10 @@
                         <br/>
 
                     </div>
-                    <!-- <input type="file" id="html5-input" /> -->
-                    <!-- Playlist shit -->
+                    <!-- Video queue -->
                     <div id="visual-queue" class="vid-list-container">
                         <ul class="vid-list" id="vidlist">
                             <li class="vid-item">
-                                <!-- <div class="thumb">
-                                    <a onClick="removeAt(0)" class="ghost-button-full-color"><i class="far fa-times-circle"></i></a>
-                                    <img src="http://img.youtube.com/vi/eg6kNoJmzkY/0.jpg">
-                                </div>
-                                <div class="desc">
-                                    Jessica Hernandez & the Deltas - Dead Brains
-                                </div> -->
                             </li>
                         </ul>
                     </div>
@@ -199,38 +180,23 @@
                         </div>
                     </div>
                     <br/>
-
-                    <!-- HTML5 player input -->
-                    <!-- <input type="file" id="html5-input" /> -->
-                    <!-- <input type="Video" style="max-width: 200px; margin-right: .5rem; margin-bottom: .5rem; float: left;" class="form-control" id="inputVideoURL" placeholder="Direct URL to .mp4/.webm"> -->
-
-                    <!-- <p style="display: none" id="html5-message" class="lead">Video File Upload Not Yet Supported</p> -->
-                    <p style="display: none" id="beta-message" class="lead">Queue is currently only supported by YouTube</p>
-
-
-
                 </div>
 
-                <!-- /.col-lg-8 -->
+
+
+                <!-- Social features -->
                 <div class="col-lg-5">
-                    <!-- <div class="col-md-4"> -->
-                    <!-- <div id="onlineArea" class="row"> -->
+                    <!-- List of online users -->
                     <h5 class="right-header">Online Users</h5>
-                    <hr style="height:0pt; visibility:hidden;" />
-
-                    <!-- <br/> -->
-                    <div class="col-md-13">
-                        <div class="well online-users noscrollbar">
-                            <ul class="list-group" id="users"></ul>
-                        </div>
-
-                        <!-- Trigger the modal with a button -->
-                        <button style="background-color: #007bff" type="button" class="nonmobile-hide btn btn-info btn-sm invite-button" data-toggle="modal" data-target="#inviteModal"><i style="width: 30px; height: 30px;" class="fas fa-user-plus"></i><br><h5>Invite</h5></button>
+                    
+                    <div class="well online-users noscrollbar">
+                        <ul class="list-group" id="users"></ul>
                     </div>
-                    <hr style="height:0pt; visibility:hidden;" />
-                    <h5 style="color:gray;">Chatroom</h5>
 
-                    <!-- Modal -->
+                    <!-- Button to open invite popup -->
+                    <button style="background-color: #007bff" type="button" class="nonmobile-hide btn btn-info btn-sm invite-button" data-toggle="modal" data-target="#inviteModal"><i style="width: 30px; height: 30px;" class="fas fa-user-plus"></i><br><h5>Invite</h5></button>
+
+                    <!-- Invite friend popup -->
                     <div id="inviteModal" class="modal fade" role="dialog">
                         <div class="modal-dialog">
 
@@ -255,9 +221,9 @@
 
                         </div>
                     </div>
-                    <!-- </div> -->
-                    <!-- </div> -->
+                    <!-- End of invite friend popup -->
 
+                    <!-- Chat box -->
                     <div id="messageArea" class="row">
                         <br/>
                         <!-- <h2 style="color:gray">Chat</h2> -->
@@ -277,15 +243,9 @@
                             </form>
                         </div>
                     </div>
-                </div>
-                <!-- /.col-md-4 -->
-            </div>
-            <!-- /.row -->
+                    <!-- End chat box -->
 
-           <!-- Call to Action Well -->
-           <div class="card text-white bg-secondary my-4 text-center">
-            <div class="card-body">
-                <p class="text-white m-0">*The synchronization may not be perfect! It's a work in progress, submit an issue on github if you wish to submit a bug report/suggestion.</p>
+                </div>
             </div>
         </div>
 
@@ -332,7 +292,7 @@
         <!-- /.row -->
 
         <!-- <hr style="height:20pt; visibility:hidden;" /> -->
-        <section id="about" class="bg-light">
+        <!-- <section id="about" class="bg-light">
             <hr style="height:100pt; visibility:hidden;" />
 
             <div class="container">
@@ -369,7 +329,7 @@
                 </div>
             </div>
         </section>
-        <hr style="height:50pt; visibility:hidden;" />
+        <hr style="height:50pt; visibility:hidden;" /> -->
 
     </div>
 </div>
@@ -377,10 +337,10 @@
     <!-- /.container -->
 
     <!-- Footer -->
-    <footer id="footer" class="py-5 bg-dark footer">
-        <div class="container">
+    <footer id="footer">
+        <!-- <div class="container">
             <p class="m-0 text-center text-white">Copyright &copy; Vynchronize 2018</p>
-        </div>
+        </div> -->
         <!-- /.container -->
     </footer>
 
@@ -470,19 +430,19 @@
                 if ($username.val() == "") {
                     console.log("ENTER A NAME")
                     var noname = document.getElementById('missinginfo')
-                    noname.innerHTML = "Surely you have a name right? Enter it below!"
+                    noname.innerHTML = "What is your name?"
                 }
                 // If name is too long
                 else if ($username.val().length > 30) {
                     console.log("NAME IS TOO LONG")
                     var noname = document.getElementById('missinginfo')
-                    noname.innerHTML = "Your name can't possibly be over 30 characters!"
+                    noname.innerHTML = "That's too long."
                 }
                 // If roomnate
                 else if ($roomnum.val().length > 50) {
                     console.log("ROOM NAME IS TOO LONG")
                     var noname = document.getElementById('missinginfo')
-                    noname.innerHTML = "How are you going to remember a room code that has more than 50 characters?"
+                    noname.innerHTML = "That's too long."
                 }
                 // If Room contains symbols
                 // Can only be reached if the user decided to be sneaky and paste them!
