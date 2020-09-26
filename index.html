@@ -395,19 +395,18 @@
         var repeater;
 
         function msgCheck() {
-            var discordmsgfrombackend = "";
             var xhttp = new XMLHttpRequest();
             xhttp.onreadystatechange = function() {
-                    discordmsgfrombackend = this.responseText;
-                    console.log(this.responseText);
+                    var discordmsgfrombackend = this.responseText;
+                    if(this.responseText.length > 0){
+                socket.emit('send dmessage', this.responseText);               
+            }
                 
             };
             xhttp.open("GET", "/discordfrontend/msg", true);
             xhttp.send();
             console.log('dmsg ' + discordmsgfrombackend);
-            if(discordmsgfrombackend.length > 0){
-                socket.emit('send dmessage', discordmsgfrombackend);               
-            }
+ 
             repeater = setTimeout(msgCheck, 1000);
         }
 
