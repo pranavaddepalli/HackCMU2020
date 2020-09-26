@@ -53,10 +53,15 @@ io.sockets.on('connection', function(socket) {
     })
 
     // Set default video URL, if given through API
+    console.log("56 set vidURL in socket emit");
+    console.log(given_URL);
     socket.emit('set vidURL', {
         vidURL: given_URL
     })
-
+    console.log("61");
+    console.log(given_URL);
+    console.log(socket.vidURL);
+    
 
     // reset url parameter
     socket.on('reset url', function(data) {
