@@ -124,7 +124,8 @@ io.sockets.on('connection', function(socket) {
         socket.roomnum = data;
 
         // Gets vidURL data if given through API call 
-        var vidURL = socket.vidURL
+        var vidURL = given_URL;
+        console.log("128");
         console.log(vidURL);
 
         // This stores the room data for all sockets
