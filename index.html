@@ -39,7 +39,7 @@
 
     <link href="css/style.css" rel="stylesheet">
     <link href="css/mobile-style.css" rel="stylesheet">
-    <link href="css/html5player.css" rel="stylesheet">
+    <!--<link href="css/html5player.css" rel="stylesheet"> -->
 
     <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="96x96" href="img/favicon-96x96.png">
@@ -92,7 +92,7 @@
 
         <!-- Loading page -->
         <!-- Loader is currently dependent on the dailymotion api because it is the slowest -->
-        <div id="loading"></div>
+        <!--<div id="loading"></div> -->
 
         <!-- User Form (First Page) -->
         <div id="userFormArea" class="row">
@@ -132,20 +132,6 @@
                     <div class="mobile-hide"><b>Mobile User</b>, please play the video once manually to give the browser permission to control the video player. </div>
                     <!-- <hr style="height:0pt; visibility:hidden;" /> -->
 
-                    <div style="margin: 10px" class="dropdown">
-                        <button style="background-color: #007bff" class="btn btn-info dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i class="fas fa-video"></i> Player
-                        </button>
-                        <div class="form-control dropdown-menu scrollable-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" onclick="changePlayer(roomnum, 0)"><i class="fab fa-youtube"></i> YouTube</a>
-                            <a class="dropdown-item" onclick="changePlayer(roomnum, 1)"><img width="14px" height="14px" src="img/dailymotion-logo.svg" alt="Daily Motion Logo"> Daily Motion</a>
-                            <a class="dropdown-item" onclick="changePlayer(roomnum, 2)"><i class="fab fa-vimeo"></i> Vimeo</a>
-                            <a class="dropdown-item" onclick="changePlayer(roomnum, 3)"><i class="fas fa-file-video"></i> HTML5 Player (.mp4/.webm) (Beta)</a>
-                        </div>
-                    </div>
-
-
-
                     <!-- <br/> <b>Note:</b> Mobile web browsers do not support autoplay. Host can control player natively. -->
 
                     <!-- INVITE MOVED TO MODAL -->
@@ -158,6 +144,7 @@
                         <div class="video" id="player"></div>
                         <!-- <iframe class="video" id="player" allowfullscreen="0" rel="0" width="640" height="360" src="https://www.youtube.com/embed/M7lc1UVf-VE?enablejsapi=1" frameborder="1" style="border: solid 4px #37474F"></iframe> -->
                     </div>
+                    <!--
                     <div id='dailyArea'>
                         <div class="video" id="player-daily"></div>
                     </div>
@@ -167,12 +154,10 @@
                     <div id='HTML5Area'>
                         <div class="html5player">
                             <video src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" width="640" height="360" class="video html5video" id="html5src" controls>
-                            <!-- <source src="video/sintel-short.mp4" type="video/mp4">
-                            <source src="video/sintel-short.webm" type="video/webm"> -->
-                            <!-- fallback content here -->
                             </video>
                         </div>
                     </div>
+                    -->
 
                     <!----------------------------------- PLAYER AREA ----------------------------------->
                     <!-- <hr> -->
@@ -180,8 +165,6 @@
                         <button id="playButton" onclick="playVideo(roomnum)" style="margin-top:.5rem" class="btn btn-primary"><i class="fa fa-play"></i> Play / <i class="fa fa-pause"></i> Pause</button>
 
                         <button id="syncbutton" onclick="syncVideo(roomnum);syncAlert()" style="margin-top:.5rem" class="btn btn-primary"><i class="fa fa-sync"></i> Sync</button>
-
-                        <button id="loveButton" onclick="loveLive(roomnum)" style="margin-top:.5rem" class="btn btn-primary"><i class="far fa-heart"></i> Random K-pop</button>
                         <!-- <br/> -->
                         <button id="hostbutton" onclick="changeHost(roomnum)" style="margin-top:.5rem" class="btn btn-primary"><i class="fas fa-users"></i> Make me the host!</button>
                         <!-- Turn off the lights -->
@@ -737,13 +720,14 @@
     <!-- Youtube -->
     <script src="js/yt.js"></script>
     <!-- Daily Motion -->
-    <script src="https://api.dmcdn.net/all.js"></script>
-    <script src="js/dm.js"></script>
+    <!-- <script src="https://api.dmcdn.net/all.js"></script>
+    <script src="js/dm.js"></script> -->
     <!-- Vimeo -->
-    <script src="https://player.vimeo.com/api/player.js"></script>
-    <script src="js/vimeo.js"></script>
+    <!-- <script src="https://player.vimeo.com/api/player.js"></script>
+    <script src="js/vimeo.js"></script> -->
     <!-- HTML5 Player -->
-    <script src="js/html5.js"></script>
+    <!-- <script src="js/html5.js"></script> -->
+    
 
 </body>
 

@@ -92,7 +92,7 @@ socket.on('compareHost', function(data) {
             }
 
             break;
-        case 1:
+        /*case 1:
             var currTime = dailyPlayer.currentTime
             var state = dailyPlayer.paused;
 
@@ -140,7 +140,7 @@ socket.on('compareHost', function(data) {
                 disconnected()
             }
 
-            break;
+            break; */
         default:
             console.log("Error invalid player id")
     }

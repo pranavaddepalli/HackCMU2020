@@ -26,7 +26,7 @@ function syncVideo(roomnum) {
             state = playerStatus
             console.log("I am host and my current time is " + currTime + state)
             break;
-        case 1:
+        /* case 1:
             currTime = dailyPlayer.currentTime;
             state = dailyPlayer.paused;
             break;
@@ -59,7 +59,7 @@ function syncVideo(roomnum) {
         case 3:
             currTime = media.currentTime;
             state = media.paused;
-            break;
+            break; */
         default:
             console.log("Error invalid player id")
     }
@@ -81,7 +81,7 @@ function getTime() {
         case 0:
             return player.getCurrentTime();
             break;
-        case 1:
+        /* case 1:
             return dailyPlayer.currentTime;
             break;
         case 2:
@@ -97,7 +97,7 @@ function getTime() {
             break;
         case 3:
             return media.currentTime;
-            break;
+            break; */
         default:
             console.log("Error invalid player id")
     }
@@ -109,7 +109,7 @@ function seekTo(time) {
             player.seekTo(time)
             player.playVideo()
             break;
-        case 1:
+        /* case 1:
             dailyPlayer.seek(currTime);
             dailyPlayer.play();
             break;
@@ -131,7 +131,7 @@ function seekTo(time) {
         case 3:
             media.currentTime = currTime
             media.play()
-            break;
+            break; */
     }
 }
 
@@ -157,7 +157,7 @@ function idParse(videoId) {
                 }
                 videoId = "invalid"
                 break
-            case 1:
+            /* case 1:
                 var myRegex = /.+\/(.+)/g
                 if (videoId.includes("playlist")) {
                     myRegex = /.+video=(.+)/g
@@ -181,7 +181,7 @@ function idParse(videoId) {
                 break
             case 3:
                 return videoId
-                break
+                break */
             default:
                 console.log("Error invalid videoId")
         }
@@ -203,13 +203,13 @@ function playlistParse(videoId) {
                 }
                 break;
 
-            case 1:
+            /* case 1:
                 break;
 
             case 2:
                 break;
             case 3:
-                break;
+                break; */
             default:
                 console.log("Error invalid player")
         }
@@ -415,7 +415,7 @@ socket.on('playVideoClient', function(data) {
         case 0:
             play()
             break;
-        case 1:
+        /* case 1:
             dailyPlay()
             break;
         case 2:
@@ -423,7 +423,7 @@ socket.on('playVideoClient', function(data) {
             break;
         case 3:
             html5Play()
-            break;
+            break; */
         default:
             console.log("Error invalid player id")
     }
@@ -434,7 +434,7 @@ socket.on('pauseVideoClient', function(data) {
         case 0:
             player.pauseVideo();
             break;
-        case 1:
+        /* case 1:
             dailyPlayer.pause();
             break;
         case 2:
@@ -442,7 +442,7 @@ socket.on('pauseVideoClient', function(data) {
             break;
         case 3:
             media.pause()
-            break;
+            break; */
         default:
             console.log("Error invalid player id")
     }
@@ -499,7 +499,7 @@ socket.on('syncVideoClient', function(data) {
                 }
                 break;
 
-            case 1:
+            /* case 1:
                 var clientTime = dailyPlayer.currentTime;
                 // Only seek if off by more than .1 seconds
                 if (true || clientTime < currTime - .1 || clientTime > currTime + .1) {
@@ -553,7 +553,7 @@ socket.on('syncVideoClient', function(data) {
                 } else {
                     media.play()
                 }
-                break;
+                break; */
 
             default:
                 console.log("Error invalid player id")
@@ -583,7 +583,7 @@ socket.on('changeVideoClient', function(data) {
             case 0:
                 player.loadVideoById(videoId);
                 break;
-            case 1:
+            /* case 1:
                 dailyPlayer.load(videoId, {
                     autoplay: true
                 });
@@ -614,7 +614,7 @@ socket.on('changeVideoClient', function(data) {
                 break;
             case 3:
                 htmlLoadVideo(videoId)
-                break;
+                break; */
             default:
                 console.log("Error invalid player id")
         }
