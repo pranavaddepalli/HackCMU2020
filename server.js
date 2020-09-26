@@ -169,17 +169,22 @@ io.sockets.on('connection', function(socket) {
             // Default video
             var defaultVid = 'ANOFGUByO98';
 
-            // if API call was made reset defaultVid
-            if(vidURL.length > 0){
-                defaultVid = vidURL;
-            }
+
 
             // reset vidURL to prevent setting a default for every socket
             vidURL = "";
 
             io.sockets.adapter.rooms['room-' + socket.roomnum].currVideo = {
-                yt: defaultVid,
+                yt: defaultVid
             }
+            
+            // if API call was made, override defaultVid
+            if(vidURL.length > 0){
+                io.sockets.adapter.rooms['room-' + socket.roomnum].currVideo = {
+                    yt: vidURL
+                }
+            }
+
             // Previous Video
             io.sockets.adapter.rooms['room-' + socket.roomnum].prevVideo = {
                 yt: {
