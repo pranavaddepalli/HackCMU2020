@@ -503,7 +503,7 @@ io.sockets.on('connection', function(socket) {
         res.send("POST request receieved with message " + discMsg);
     });
 
-    app.get('/discordfrontendmsg', function(req, res) {
+    app.get('/discordfrontend/msg', function(req, res) {
         res.send(discMsg);
     });
         
