@@ -36,8 +36,7 @@ app.get('/:room', function(req, res) {
 
 app.get('/api/:vidURL', function(req, res) {
     given_URL = req.params.vidURL
-    res.redirect('/room');
-
+    res.redirect('/');
 });
 
 var roomno = 1;
