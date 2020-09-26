@@ -512,10 +512,9 @@ io.sockets.on('connection', function(socket) {
         // console.log(data);
         console.log('entered new msg socket function');
         console.log(socket.roomnum);
-        console.log(discordRoom);
-        io.sockets.in("room-" + discordRoom).emit('new message', {
+        io.sockets.in("room-" + socket.roomnum).emit('new message', {
             msg: encodedMsg,
-            user: 'from discord'
+            user: socket.username
         });
     });
 
