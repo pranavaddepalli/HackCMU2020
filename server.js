@@ -363,6 +363,7 @@ io.sockets.on('connection', function(socket) {
  // Enqueue video
     // Gets title then calls back
     socket.on('enqueue video', function(data) {
+        console.log("entered enqueue video socket");
         if (io.sockets.adapter.rooms['room-' + socket.roomnum] !== undefined) {
             test = false
             var user = data.user
@@ -370,6 +371,7 @@ io.sockets.on('connection', function(socket) {
             var title = ""
             switch (io.sockets.adapter.rooms['room-' + socket.roomnum].currPlayer) {
                 case 0:
+                    console.log("entered youtube case for queue")
                     // See yt.js file
                     socket.emit('get title', {
                         videoId: videoId,
@@ -382,6 +384,8 @@ io.sockets.on('connection', function(socket) {
                             videoId: videoId,
                             title: title
                         })
+                        console.log("387");
+                        console.log(title);
                         console.log(io.sockets.adapter.rooms['room-' + socket.roomnum].queue.yt)
                         // Update front end
                         updateQueueVideos()
